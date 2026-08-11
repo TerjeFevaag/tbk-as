@@ -4,7 +4,7 @@ import { ArticleCard } from "@/components/article-card";
 import { articles } from "@/content/articles";
 
 export const metadata: Metadata = {
-  title: "Artikler | Teknisk Byggkontroll AS",
+  title: "Artikler",
   description:
     "Artikler og nyheter fra Teknisk Byggkontroll AS om innregulering, radonmåling, termografi og prosjektledelse.",
 };

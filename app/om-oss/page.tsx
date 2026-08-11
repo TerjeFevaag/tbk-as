@@ -4,7 +4,7 @@ import Image from "next/image";
 import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Om oss | Teknisk Byggkontroll AS",
+  title: "Om oss",
   description:
     "Møt Olav L. Strøm, uavhengig og nøytral leverandør av tekniske kontroller og analyser i Fiskum og sentrale Østlandet.",
 };
@@ -26,8 +26,8 @@ export default function OmOssPage() {
               <Image
                 src="/images/olav-strom.jpg"
                 alt="Olav L. Strøm"
-                width={640}
-                height={800}
+                width={617}
+                height={781}
                 className="h-auto w-full object-cover"
                 priority
               />

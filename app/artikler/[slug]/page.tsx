@@ -21,7 +21,7 @@ export async function generateMetadata({
   const article = articles.find((a) => a.slug === slug);
   if (!article) return {};
   return {
-    title: `${article.title} | Teknisk Byggkontroll AS`,
+    title: article.title,
     description: article.excerpt,
   };
 }

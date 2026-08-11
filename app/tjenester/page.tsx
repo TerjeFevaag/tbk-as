@@ -4,7 +4,7 @@ import { ServiceCard } from "@/components/service-card";
 import { services } from "@/content/services";
 
 export const metadata: Metadata = {
-  title: "Tjenester | Teknisk Byggkontroll AS",
+  title: "Tjenester",
   description:
     "Innregulering, uavhengig kontroll i byggesak og sprinklerkontroll fra Teknisk Byggkontroll AS.",
 };

@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { siteConfig } from "@/content/site";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -16,9 +17,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Teknisk Byggkontroll AS",
-  description:
-    "Uavhengig kontroll av bygg, varme og brannsikkerhet i Fiskum og sentrale Østlandet.",
+  title: {
+    default: "Teknisk Byggkontroll AS",
+    template: "%s | Teknisk Byggkontroll AS",
+  },
+  description: siteConfig.tagline,
+  metadataBase: new URL(siteConfig.url),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

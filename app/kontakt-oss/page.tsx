@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact-form";
 import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Kontakt oss | Teknisk Byggkontroll AS",
+  title: "Kontakt oss",
   description:
     "Ta kontakt med Teknisk Byggkontroll AS for innregulering, uavhengig kontroll i byggesak eller sprinklerkontroll.",
 };

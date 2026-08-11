@@ -57,7 +57,9 @@ export function SiteHeader() {
           <nav aria-label="Hovednavigasjon" className="hidden md:block">
             <ul className="flex items-center gap-8 font-serif text-[0.95rem] tracking-wide text-brand-slate">
               {navLinks.map((link) => {
-                const active = pathname === link.href;
+                const active =
+                  pathname === link.href ||
+                  (link.href !== "/" && pathname.startsWith(link.href + "/"));
                 return (
                   <li key={link.href}>
                     <Link
@@ -116,7 +118,9 @@ export function SiteHeader() {
         <nav aria-label="Mobilnavigasjon" className="flex h-full flex-col justify-center px-8">
           <ul className="flex flex-col">
             {navLinks.map((link, index) => {
-              const active = pathname === link.href;
+              const active =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href + "/"));
               return (
                 <li
                   key={link.href}

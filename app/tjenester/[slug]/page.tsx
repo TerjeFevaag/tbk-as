@@ -21,7 +21,7 @@ export async function generateMetadata({
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
   return {
-    title: `${service.name} | Teknisk Byggkontroll AS`,
+    title: service.name,
     description: service.shortDescription,
   };
 }
@@ -110,7 +110,7 @@ export default async function ServiceDetailPage({
             <h2 className="font-serif text-2xl text-brand-slate md:text-3xl">
               Fra oppdrag
             </h2>
-            <div className="mt-6 grid grid-cols-3 gap-3">
+            <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
               {service.galleryImages.map((src) => (
                 <div
                   key={src}
@@ -120,6 +120,7 @@ export default async function ServiceDetailPage({
                     src={src}
                     alt={service.name}
                     fill
+                    sizes="(min-width: 768px) 33vw, 50vw"
                     className="object-cover"
                   />
                 </div>
