@@ -45,12 +45,12 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
           >
             <Image
-              src="/images/logo.svg"
+              src="/images/logo.png"
               alt={siteConfig.name}
-              width={320}
-              height={48}
+              width={441}
+              height={76}
               priority
-              className="h-8 w-auto"
+              className="h-9 w-auto"
             />
           </Link>
 
