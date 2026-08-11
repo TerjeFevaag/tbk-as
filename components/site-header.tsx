@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
 
 const navLinks = [
@@ -17,7 +18,20 @@ const navLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
+
+  function closeMobileMenu() {
+    setOpen(false);
+    setMobileServicesOpen(false);
+  }
+
+  function toggleMobileMenu() {
+    setOpen((value) => {
+      if (value) setMobileServicesOpen(false);
+      return !value;
+    });
+  }
 
   // Lock body scroll while the full-screen mobile menu is open.
   useEffect(() => {
@@ -42,7 +56,7 @@ export function SiteHeader() {
             href="/"
             className="shrink-0"
             aria-label={siteConfig.name}
-            onClick={() => setOpen(false)}
+            onClick={closeMobileMenu}
           >
             <Image
               src="/images/logo.png"
@@ -60,22 +74,57 @@ export function SiteHeader() {
                 const active =
                   pathname === link.href ||
                   (link.href !== "/" && pathname.startsWith(link.href + "/"));
+                const isServices = link.href === "/tjenester";
+
                 return (
-                  <li key={link.href}>
+                  <li key={link.href} className={isServices ? "group/services relative" : undefined}>
                     <Link
                       href={link.href}
                       aria-current={active ? "page" : undefined}
-                      className={`group relative py-2 transition-colors duration-200 hover:text-brand-orange ${
+                      className={`group relative flex items-center gap-1.5 py-2 transition-colors duration-200 hover:text-brand-orange ${
                         active ? "text-brand-orange" : ""
                       }`}
                     >
                       {link.label}
+                      {isServices && (
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 20 20"
+                          className="h-3 w-3 shrink-0 transition-transform duration-200 group-hover/services:rotate-180"
+                        >
+                          <path
+                            d="M5 7.5 10 12.5 15 7.5"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      )}
                       <span
                         className={`absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-brand-orange transition-transform duration-300 group-hover:scale-x-100 ${
                           active ? "scale-x-100" : ""
                         }`}
                       />
                     </Link>
+
+                    {isServices && (
+                      <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition-opacity duration-200 group-hover/services:visible group-hover/services:opacity-100 group-focus-within/services:visible group-focus-within/services:opacity-100">
+                        <ul className="w-64 rounded-sm bg-white p-2 shadow-lg ring-1 ring-brand-slate/10">
+                          {services.map((service) => (
+                            <li key={service.slug}>
+                              <Link
+                                href={`/tjenester/${service.slug}`}
+                                className="block rounded-sm px-4 py-2.5 text-sm text-brand-slate transition-colors hover:bg-brand-bg hover:text-brand-orange"
+                              >
+                                {service.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </li>
                 );
               })}
@@ -84,7 +133,7 @@ export function SiteHeader() {
 
           <button
             type="button"
-            onClick={() => setOpen((value) => !value)}
+            onClick={toggleMobileMenu}
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Lukk meny" : "Åpne meny"}
@@ -121,6 +170,8 @@ export function SiteHeader() {
               const active =
                 pathname === link.href ||
                 (link.href !== "/" && pathname.startsWith(link.href + "/"));
+              const isServices = link.href === "/tjenester";
+
               return (
                 <li
                   key={link.href}
@@ -129,16 +180,72 @@ export function SiteHeader() {
                     open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
                   }`}
                 >
-                  <Link
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    aria-current={active ? "page" : undefined}
-                    className={`block py-4 font-serif text-3xl ${
-                      active ? "text-brand-orange" : "text-brand-slate"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
+                  <div className="flex items-center">
+                    <Link
+                      href={link.href}
+                      onClick={closeMobileMenu}
+                      aria-current={active ? "page" : undefined}
+                      className={`block flex-1 py-4 font-serif text-3xl ${
+                        active ? "text-brand-orange" : "text-brand-slate"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                    {isServices && (
+                      <button
+                        type="button"
+                        onClick={() => setMobileServicesOpen((value) => !value)}
+                        aria-expanded={mobileServicesOpen}
+                        aria-controls="mobile-services-submenu"
+                        aria-label={
+                          mobileServicesOpen ? "Lukk tjenester-undermeny" : "Åpne tjenester-undermeny"
+                        }
+                        className="flex h-11 w-11 shrink-0 items-center justify-center text-brand-slate"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 20 20"
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            mobileServicesOpen ? "rotate-180" : ""
+                          }`}
+                        >
+                          <path
+                            d="M5 7.5 10 12.5 15 7.5"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+
+                  {isServices && (
+                    <ul
+                      id="mobile-services-submenu"
+                      className={`grid overflow-hidden transition-all duration-300 ${
+                        mobileServicesOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <li className="min-h-0">
+                        <ul className="flex flex-col pb-4">
+                          {services.map((service) => (
+                            <li key={service.slug}>
+                              <Link
+                                href={`/tjenester/${service.slug}`}
+                                onClick={closeMobileMenu}
+                                className="block py-2 pl-4 font-serif text-xl text-brand-slate/80 transition-colors hover:text-brand-orange"
+                              >
+                                {service.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    </ul>
+                  )}
                 </li>
               );
             })}
