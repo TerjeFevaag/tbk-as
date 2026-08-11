@@ -4,6 +4,7 @@ export type Article = {
   publishedAt: string; // ISO date, best-effort from original if findable, else omit precision to YYYY-MM
   excerpt: string;
   coverImage?: string;
+  images?: string[]; // additional real photos shown after the article body
   body: string[]; // paragraphs, Norwegian, HTML-stripped
 };
 
@@ -25,6 +26,10 @@ export const articles: Article[] = [
     excerpt:
       "Riktig innregulering av ventilasjonsanlegget sikrer at prosjekterte luftmengder faktisk leveres til rommene, og er en forutsetning for lavt energiforbruk i moderne, behovsstyrte ventilasjonsanlegg.",
     coverImage: "/images/articles/innregulering-ventilasjon/ventilasjon-innregulering.jpg",
+    images: [
+      "/images/articles/innregulering-ventilasjon/ventilasjon-2.jpg",
+      "/images/articles/innregulering-ventilasjon/ventilasjon-3.jpg",
+    ],
     body: [
       "Innregulering av ventilasjonsanlegg er trolig den viktigste arbeidsoppgaven på ditt ventilasjons- og klimasystem. Innreguleringen er også funksjonskontroll som vil avdekke om de prosjekterte mengder og effekter leveres til ønsket rom. Dagens ventilasjonsanlegg er ofte komplekse da de skal samarbeide med byggets varme-, kjøle-, automatikk- og EL-anlegg. For å oppnå dagens krav til energiforbruk i bygninger er man avhengig av å benytte behovstyrte ventilasjonsanlegg som også samarbeider med bygget øvrige tekniske anlegg.",
       "Teknisk Byggkontroll utfører innregulering av VAV-, CAV- og DCV baserte ventilasjonsanlegg.",

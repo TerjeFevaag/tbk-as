@@ -7,13 +7,22 @@ export type Service = {
   // real image or the styled gradient placeholder renders (see Task 8).
   heroImage?: string;
   galleryImages?: string[]; // additional real photos shown further down the detail page (Task 8)
+  // A single striking figure pulled from the copy, shown as a stat callout.
+  stat?: { value: string; label: string };
+  // 3 short, scannable facts shown in the detail page's sidebar card.
+  quickFacts?: string[];
   sections: {
     heading: string;
     body: string[]; // body = paragraphs
     items?: string[]; // optional bullet list rendered right after body, tied to this section's lead-in
   }[];
   // Bullet groups NOT tied to a specific section's lead-in sentence.
-  bullets?: { heading: string; items: string[] }[];
+  bullets?: {
+    heading: string;
+    items: string[];
+    // "steps" renders a numbered sequence (use only for a genuine ordered process).
+    style?: "steps" | "list";
+  }[];
 };
 
 export const services: Service[] = [
@@ -23,10 +32,11 @@ export const services: Service[] = [
     shortDescription:
       "Innregulering av varme- og kjøleanlegg gir jevnere temperatur, lavere energibruk og bedre komfort.",
     heroImage: "/images/services/innregulering/innregulering-1.png",
-    galleryImages: [
-      "/images/services/innregulering/innregulering-2.jpg",
-      "/images/services/innregulering/innregulering-3.jpg",
-      "/images/services/innregulering/innregulering-4.png",
+    stat: { value: "5–15 %", label: "typisk lavere energibruk til oppvarming og kjøling" },
+    quickFacts: [
+      "Gjelder: Varme- og kjøleanlegg",
+      "Energibesparelse: 5–15 % (opptil 20 % i dårlig innregulerte anlegg)",
+      "Resultat: Dokumentert innreguleringsrapport",
     ],
     sections: [
       {
@@ -104,17 +114,16 @@ export const services: Service[] = [
       "Uavhengig kontroll for tiltaksklasse 1 sikrer at våtrom og lufttetthet oppfyller kravene i plan- og bygningsloven.",
     // No real photo exists yet for this service; heroImage is intentionally
     // omitted so the page falls back to the styled gradient placeholder.
+    quickFacts: [
+      "Gjelder: Tiltaksklasse 1",
+      "Fokus: Våtrom og lufttetthet",
+      "Resultat: Uavhengig sluttdokumentasjon",
+    ],
     sections: [
       {
-        heading: "Uavhengig kontroll Byggesak",
+        heading: "Hvorfor uavhengig kontroll?",
         body: [
-          "Uavhengig kontroll for tiltaksklasse 1 sikrer at våtrom og lufttetthet oppfyller kravene i plan- og bygningsloven. Dette reduserer fuktskader, radon- og inneklimaproblemer og gir trygg dokumentasjon ved overtakelse.",
-        ],
-      },
-      {
-        heading: "Ta kontakt",
-        body: [
-          "Trenger du uavhengig kontroll for våtrom eller lufttetthet? Ta kontakt med Teknisk Byggkontroll AS for rask avklaring og profesjonell kontroll.",
+          "Dette reduserer fuktskader, radon- og inneklimaproblemer og gir trygg dokumentasjon ved overtakelse.",
         ],
       },
     ],
@@ -128,6 +137,7 @@ export const services: Service[] = [
       },
       {
         heading: "Hvordan gjennomføres kontrollen?",
+        style: "steps",
         items: [
           "Avtale om omfang og kontrollpunkter",
           "Dokumentgjennomgang av tegninger og produktdokumentasjon",
@@ -155,6 +165,13 @@ export const services: Service[] = [
       "/images/services/sprinkler/sprinkler-2.jpg",
       "/images/services/sprinkler/sprinkler-3.jpg",
       "/images/services/sprinkler/sprinkler-4.jpg",
+      "/images/services/sprinkler/sprinkler-5.png",
+    ],
+    stat: { value: "FG", label: "kontroll utført etter gjeldende FG-regler og prosjekteringsstandard" },
+    quickFacts: [
+      "Kontrollmetode: FG-kontroll",
+      "Utføres av: Kvalifisert personell",
+      "Dokumentasjon: Rapport med avvik, registrert i FG-kontroll",
     ],
     sections: [
       {
