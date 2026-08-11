@@ -22,7 +22,7 @@ export function ArticleCard({ article }: { article: Article }) {
         {article.coverImage ? (
           <Image
             src={article.coverImage}
-            alt={article.title}
+            alt={`${article.title} — Teknisk Byggkontroll AS`}
             fill
             sizes="(min-width: 768px) 33vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
