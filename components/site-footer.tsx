@@ -41,9 +41,20 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-xs text-white/50">
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {year} {siteConfig.name}. Alle rettigheter reservert.
+          </p>
+          <p>
+            Nettside:{" "}
+            <a
+              href="http://fevaag.no/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+            >
+              Fevaag Web Consulting
+            </a>
           </p>
         </div>
       </div>
