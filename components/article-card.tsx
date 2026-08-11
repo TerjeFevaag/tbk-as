@@ -24,6 +24,7 @@ export function ArticleCard({ article }: { article: Article }) {
             src={article.coverImage}
             alt={article.title}
             fill
+            sizes="(min-width: 768px) 33vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
