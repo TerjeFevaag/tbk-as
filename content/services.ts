@@ -4,6 +4,7 @@ export type Service = {
   shortDescription: string;
   heroImage: string; // path under /public/images
   hasRealImage?: boolean; // true once a real photo exists on disk for heroImage (see Task 8)
+  galleryImages?: string[]; // additional real photos shown further down the detail page (Task 8)
   sections: { heading: string; body: string[] }[]; // body = paragraphs
   bullets?: { heading: string; items: string[] }[];
 };
@@ -14,8 +15,13 @@ export const services: Service[] = [
     name: "Innregulering",
     shortDescription:
       "Innregulering av varme- og kjøleanlegg gir jevnere temperatur, lavere energibruk og bedre komfort.",
-    heroImage: "/images/services/innregulering-hero.jpg",
+    heroImage: "/images/services/innregulering/innregulering-1.png",
     hasRealImage: true,
+    galleryImages: [
+      "/images/services/innregulering/innregulering-2.jpg",
+      "/images/services/innregulering/innregulering-3.jpg",
+      "/images/services/innregulering/innregulering-4.png",
+    ],
     sections: [
       {
         heading: "Hvorfor bør varme- og kjøleanlegg innreguleres",
@@ -137,8 +143,13 @@ export const services: Service[] = [
     name: "Sprinklerkontroll",
     shortDescription:
       "FG-kontroll av sprinkleranlegg avdekker feil, mangler og endringer som kan redusere anleggets evne til å begrense eller slokke en brann.",
-    heroImage: "/images/services/sprinkler-hero.jpg",
+    heroImage: "/images/services/sprinkler/sprinkler-1.jpg",
     hasRealImage: true,
+    galleryImages: [
+      "/images/services/sprinkler/sprinkler-2.jpg",
+      "/images/services/sprinkler/sprinkler-3.jpg",
+      "/images/services/sprinkler/sprinkler-4.jpg",
+    ],
     sections: [
       {
         heading: "FG-kontroll av sprinkleranlegg",
