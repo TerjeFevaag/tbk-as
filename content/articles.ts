@@ -35,10 +35,10 @@ export const articles: Article[] = [
     title: "Leier du ut bolig?",
     publishedAt: "2013-04-30",
     excerpt:
-      "Boligeiere som leier ut, er pålagt å måle radonnivået i utleieboligen og gjøre nødvendige tiltak i henhold til strålevernforskriften.",
+      "Alle som leier ut bolig plikter å kontrollere radonnivået i utleieboligen samt å gjøre eventuelle utbedringer ifølge kravene i strålevernforskriften, innen 1. januar 2014.",
     body: [
-      "Alle som leier ut en bolig er pålagt å kontrollere radonnivået i utleieboligen, og gjennomføre eventuelle nødvendige forbedringer i henhold til kravene i strålevernforskriften, senest 1. januar 2014.",
-      "Les mer om radonmåling av utleieboliger i Radonnytt.",
+      "Alle som leier ut bolig plikter å kontrollere radonnivået i utleieboligen samt å gjøre eventuelle utbedringer ifølge kravene i strålevernforskriften, innen 1. januar 2014.",
+      "Les mer om radonkontroll av utleiebolig her; Radonnytt.",
     ],
   },
   {
