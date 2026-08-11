@@ -7,7 +7,7 @@ export function ServiceCard({ service }: { service: Service }) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-sm bg-white ring-1 ring-brand-slate/10 transition-shadow hover:shadow-lg">
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-bg">
-        {service.hasRealImage ? (
+        {service.heroImage ? (
           <Image
             src={service.heroImage}
             alt={service.name}

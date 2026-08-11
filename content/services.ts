@@ -2,10 +2,17 @@ export type Service = {
   slug: string;
   name: string;
   shortDescription: string;
-  heroImage: string; // path under /public/images
-  hasRealImage?: boolean; // true once a real photo exists on disk for heroImage (see Task 8)
+  // Path under /public/images. Omit entirely when no real photo exists yet
+  // for this service — presence of heroImage is what decides whether the
+  // real image or the styled gradient placeholder renders (see Task 8).
+  heroImage?: string;
   galleryImages?: string[]; // additional real photos shown further down the detail page (Task 8)
-  sections: { heading: string; body: string[] }[]; // body = paragraphs
+  sections: {
+    heading: string;
+    body: string[]; // body = paragraphs
+    items?: string[]; // optional bullet list rendered right after body, tied to this section's lead-in
+  }[];
+  // Bullet groups NOT tied to a specific section's lead-in sentence.
   bullets?: { heading: string; items: string[] }[];
 };
 
@@ -16,7 +23,6 @@ export const services: Service[] = [
     shortDescription:
       "Innregulering av varme- og kjøleanlegg gir jevnere temperatur, lavere energibruk og bedre komfort.",
     heroImage: "/images/services/innregulering/innregulering-1.png",
-    hasRealImage: true,
     galleryImages: [
       "/images/services/innregulering/innregulering-2.jpg",
       "/images/services/innregulering/innregulering-3.jpg",
@@ -96,7 +102,8 @@ export const services: Service[] = [
     name: "Uavhengig kontroll i byggesak",
     shortDescription:
       "Uavhengig kontroll for tiltaksklasse 1 sikrer at våtrom og lufttetthet oppfyller kravene i plan- og bygningsloven.",
-    heroImage: "/images/services/uavhengig-kontroll-hero.jpg",
+    // No real photo exists yet for this service; heroImage is intentionally
+    // omitted so the page falls back to the styled gradient placeholder.
     sections: [
       {
         heading: "Uavhengig kontroll Byggesak",
@@ -107,7 +114,7 @@ export const services: Service[] = [
       {
         heading: "Ta kontakt",
         body: [
-          "Trenger du uavhengig kontroll for våtrom eller lufttetthet? Kontakt Teknisk Byggkontroll AS for rask avklaring og profesjonell kontroll. E-post: olav@tbk-as.no | Tlf: 948 51 228",
+          "Trenger du uavhengig kontroll for våtrom eller lufttetthet? Ta kontakt med Teknisk Byggkontroll AS for rask avklaring og profesjonell kontroll.",
         ],
       },
     ],
@@ -144,7 +151,6 @@ export const services: Service[] = [
     shortDescription:
       "FG-kontroll av sprinkleranlegg avdekker feil, mangler og endringer som kan redusere anleggets evne til å begrense eller slokke en brann.",
     heroImage: "/images/services/sprinkler/sprinkler-1.jpg",
-    hasRealImage: true,
     galleryImages: [
       "/images/services/sprinkler/sprinkler-2.jpg",
       "/images/services/sprinkler/sprinkler-3.jpg",
@@ -172,17 +178,47 @@ export const services: Service[] = [
           "Sprinkleranlegg påvirkes over tid av bruk, vedlikehold og endringer i bygget. Ombygging, nye vegger, endret lagringshøyde eller tildekking av sprinklerhoder kan føre til at anlegget ikke lenger gir den beskyttelsen det opprinnelig ble dimensjonert for.",
           "En FG-kontroll kan blant annet bidra til:",
         ],
+        items: [
+          "Økt brannsikkerhet: Feil som kan svekke anleggets funksjon, blir avdekket.",
+          "Tidlig oppdagelse av avvik: Mangler kan rettes før de får alvorlige konsekvenser.",
+          "Bedre dokumentasjon: Eier får en oversiktlig rapport over anleggets tilstand.",
+          "Oppfølging av myndighets- og forsikringskrav: Kontrollen bidrar til dokumentert sikkerhetsarbeid.",
+          "Tryggere drift: Regelmessig kontroll reduserer risikoen for at skjulte feil blir stående over tid.",
+          "Enklere vedlikehold: Rapporten gir et godt grunnlag for prioritering og utbedring.",
+        ],
       },
       {
         heading: "Hva kontrolleres?",
         body: [
-          "Kontrollens omfang tilpasses anleggstype, byggets bruk, aktuell standard og tilgjengelig dokumentasjon. En kontroll kan blant annet omfatte:",
+          "Kontrollens omfang tilpasses anleggstype, byggets bruk, aktuell standard og tilgjengelig dokumentasjon.",
           "Kontrollen er normalt en stikkprøvebasert tilstandsvurdering og må ikke forveksles med service eller full funksjonsprøving av alle komponenter.",
+          "En kontroll kan blant annet omfatte:",
+        ],
+        items: [
+          "Kontroll av sprinklerhoder, rørnett, ventiler og alarmsystemer.",
+          "Visuell vurdering av korrosjon, skader, lekkasjer og tildekking.",
+          "Kontroll av vannforsyning, trykk og tilgjengelig kapasitet.",
+          "Funksjonsprøving av alarmventiler, vannstrømsalarmer og overvåkede ventiler.",
+          "Kontroll av plassering, avstander og fri klaring rundt sprinklerhoder.",
+          "Vurdering av om rominndeling, bruk eller lagring er endret.",
+          "Gjennomgang av tegninger, beregninger, tidligere rapporter og annen dokumentasjon.",
+          "Kontroll av merking, tilgjengelighet og rutiner for ettersyn og vedlikehold.",
         ],
       },
       {
         heading: "Hvilke avvik kan bli avdekket?",
         body: ["Vanlige avvik kan være:"],
+        items: [
+          "Tildekkede, skadde eller feilplasserte sprinklerhoder.",
+          "For liten avstand mellom lagrede varer og sprinklerhoder.",
+          "Stengte eller mangelfullt overvåkede ventiler.",
+          "Manglende eller ufullstendig dokumentasjon.",
+          "Endringer i bygget som ikke er vurdert mot sprinkleranlegget.",
+          "Korrosjon, lekkasjer eller mekaniske skader.",
+          "Manglende prøving, service eller vedlikehold.",
+          "Utilstrekkelig vannforsyning eller ukjent kapasitet.",
+          "Feil klassifisering i forhold til byggets faktiske bruk og risiko.",
+        ],
       },
       {
         heading: "Rapportering og oppfølging",
@@ -195,6 +231,15 @@ export const services: Service[] = [
         heading: "Når bør kontrollen gjennomføres?",
         body: [
           "Behovet og intervallet bestemmes av gjeldende regelverk, aktuell standard, forsikringsvilkår og byggets forutsetninger. Kontroll er særlig aktuelt:",
+        ],
+        items: [
+          "Ved ferdigstillelse av et nytt sprinkleranlegg.",
+          "Etter større ombygginger eller endret bruk av bygget.",
+          "Når lagringsmåte eller lagringshøyde endres.",
+          "Når anlegget er utvidet eller vesentlig endret.",
+          "Når dokumentasjonen er mangelfull eller uklar.",
+          "Som periodisk kontroll i driftsfasen.",
+          "Når forsikringsselskap eller myndighet krever dokumentert kontroll.",
         ],
       },
       {
@@ -209,58 +254,6 @@ export const services: Service[] = [
         body: [
           "En FG-kontroll gir bygningseier et bedre grunnlag for å ivareta brannsikkerheten og dokumentere anleggets tilstand. Målet er ikke bare å oppfylle krav, men å sikre at sprinkleranlegget har best mulige forutsetninger for å fungere ved en brann.",
           "Trenger bygget kontroll av sprinkleranlegget? Ta kontakt for vurdering av anlegget, nødvendig dokumentasjon og kontrollens omfang.",
-        ],
-      },
-    ],
-    bullets: [
-      {
-        heading: "Hvorfor er sprinklerkontroll viktig?",
-        items: [
-          "Økt brannsikkerhet: Feil som kan svekke anleggets funksjon, blir avdekket.",
-          "Tidlig oppdagelse av avvik: Mangler kan rettes før de får alvorlige konsekvenser.",
-          "Bedre dokumentasjon: Eier får en oversiktlig rapport over anleggets tilstand.",
-          "Oppfølging av myndighets- og forsikringskrav: Kontrollen bidrar til dokumentert sikkerhetsarbeid.",
-          "Tryggere drift: Regelmessig kontroll reduserer risikoen for at skjulte feil blir stående over tid.",
-          "Enklere vedlikehold: Rapporten gir et godt grunnlag for prioritering og utbedring.",
-        ],
-      },
-      {
-        heading: "Hva kontrolleres?",
-        items: [
-          "Kontroll av sprinklerhoder, rørnett, ventiler og alarmsystemer.",
-          "Visuell vurdering av korrosjon, skader, lekkasjer og tildekking.",
-          "Kontroll av vannforsyning, trykk og tilgjengelig kapasitet.",
-          "Funksjonsprøving av alarmventiler, vannstrømsalarmer og overvåkede ventiler.",
-          "Kontroll av plassering, avstander og fri klaring rundt sprinklerhoder.",
-          "Vurdering av om rominndeling, bruk eller lagring er endret.",
-          "Gjennomgang av tegninger, beregninger, tidligere rapporter og annen dokumentasjon.",
-          "Kontroll av merking, tilgjengelighet og rutiner for ettersyn og vedlikehold.",
-        ],
-      },
-      {
-        heading: "Hvilke avvik kan bli avdekket?",
-        items: [
-          "Tildekkede, skadde eller feilplasserte sprinklerhoder.",
-          "For liten avstand mellom lagrede varer og sprinklerhoder.",
-          "Stengte eller mangelfullt overvåkede ventiler.",
-          "Manglende eller ufullstendig dokumentasjon.",
-          "Endringer i bygget som ikke er vurdert mot sprinkleranlegget.",
-          "Korrosjon, lekkasjer eller mekaniske skader.",
-          "Manglende prøving, service eller vedlikehold.",
-          "Utilstrekkelig vannforsyning eller ukjent kapasitet.",
-          "Feil klassifisering i forhold til byggets faktiske bruk og risiko.",
-        ],
-      },
-      {
-        heading: "Når bør kontrollen gjennomføres?",
-        items: [
-          "Ved ferdigstillelse av et nytt sprinkleranlegg.",
-          "Etter større ombygginger eller endret bruk av bygget.",
-          "Når lagringsmåte eller lagringshøyde endres.",
-          "Når anlegget er utvidet eller vesentlig endret.",
-          "Når dokumentasjonen er mangelfull eller uklar.",
-          "Som periodisk kontroll i driftsfasen.",
-          "Når forsikringsselskap eller myndighet krever dokumentert kontroll.",
         ],
       },
     ],

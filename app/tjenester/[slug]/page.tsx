@@ -37,7 +37,7 @@ export default async function ServiceDetailPage({
 
   return (
     <main>
-      {service.hasRealImage ? (
+      {service.heroImage ? (
         <div className="relative h-[42vh] min-h-[320px] w-full overflow-hidden bg-brand-bg">
           <Image
             src={service.heroImage}
@@ -75,6 +75,22 @@ export default async function ServiceDetailPage({
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
+              {section.items && section.items.length > 0 && (
+                <ul className="mt-4 space-y-2">
+                  {section.items.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex gap-3 text-base leading-relaxed text-brand-slate/90 md:text-lg"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
