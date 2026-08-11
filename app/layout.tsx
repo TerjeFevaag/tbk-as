@@ -23,6 +23,31 @@ export const metadata: Metadata = {
   },
   description: siteConfig.tagline,
   metadataBase: new URL(siteConfig.url),
+  openGraph: {
+    siteName: siteConfig.name,
+    locale: "nb_NO",
+    type: "website",
+  },
+};
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: siteConfig.name,
+  image: `${siteConfig.url}/images/logo.png`,
+  telephone: siteConfig.phoneHref.replace("tel:", ""),
+  email: siteConfig.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address,
+    addressCountry: "NO",
+  },
+  areaServed: "Sentrale Østlandet, Norge",
+  url: siteConfig.url,
+  founder: {
+    "@type": "Person",
+    name: "Olav L. Strøm",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -32,6 +57,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
         <SiteHeader />
         <div className="flex-1">{children}</div>
         <SiteFooter />

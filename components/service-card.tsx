@@ -10,7 +10,7 @@ export function ServiceCard({ service }: { service: Service }) {
         {service.heroImage ? (
           <Image
             src={service.heroImage}
-            alt={service.name}
+            alt={`${service.name} — Teknisk Byggkontroll AS`}
             fill
             sizes="(min-width: 768px) 33vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"

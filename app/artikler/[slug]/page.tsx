@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { formatArticleDate } from "@/components/article-card";
 import { articles } from "@/content/articles";
+import { siteConfig } from "@/content/site";
 
 type Params = { slug: string };
 
@@ -23,6 +24,15 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.excerpt,
+    alternates: { canonical: `${siteConfig.url}/artikler/${article.slug}` },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: `${siteConfig.url}/artikler/${article.slug}`,
+      type: "article",
+      publishedTime: article.publishedAt,
+      images: article.coverImage ? [{ url: article.coverImage }] : undefined,
+    },
   };
 }
 
@@ -35,8 +45,33 @@ export default async function ArticleDetailPage({
   const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.publishedAt,
+    image: article.coverImage ? `${siteConfig.url}${article.coverImage}` : undefined,
+    author: {
+      "@type": "Person",
+      name: "Olav L. Strøm",
+      jobTitle: "Uavhengig kontrollør",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    url: `${siteConfig.url}/artikler/${article.slug}`,
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {article.coverImage ? (
         <div className="relative h-[42vh] min-h-[320px] w-full overflow-hidden bg-brand-bg">
           <Image
@@ -65,16 +100,55 @@ export default async function ArticleDetailPage({
         </div>
       )}
 
+      <nav aria-label="Brødsmulesti" className="border-b border-brand-gray/15">
+        <div className="mx-auto max-w-3xl px-6 py-3 text-xs text-brand-gray">
+          <Link href="/" className="hover:text-brand-orange">
+            Hjem
+          </Link>{" "}
+          /{" "}
+          <Link href="/artikler" className="hover:text-brand-orange">
+            Artikler
+          </Link>{" "}
+          / <span className="text-brand-slate">{article.title}</span>
+        </div>
+      </nav>
+
       <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-        <p className="text-xs font-medium uppercase tracking-[0.1em] text-brand-orange">
-          {formatArticleDate(article.publishedAt)}
-        </p>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-brand-gray">
+          <p className="font-medium uppercase tracking-[0.1em] text-brand-orange">
+            {formatArticleDate(article.publishedAt)}
+          </p>
+          <span aria-hidden="true">·</span>
+          <p>
+            Skrevet av <span className="text-brand-slate">Olav L. Strøm</span>, uavhengig
+            kontrollør hos {siteConfig.shortName}
+          </p>
+        </div>
 
         <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-slate/90 md:text-lg">
           {article.body.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
+
+        {article.images && article.images.length > 0 && (
+          <div className="mt-10 grid grid-cols-2 gap-3">
+            {article.images.map((src) => (
+              <div
+                key={src}
+                className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-bg"
+              >
+                <Image
+                  src={src}
+                  alt={`${article.title} — bilde fra oppdrag`}
+                  fill
+                  sizes="50vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="mt-14 border-t border-brand-gray/15 pt-8">
           <Link

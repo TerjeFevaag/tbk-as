@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Om oss",
   description:
     "Møt Olav L. Strøm, uavhengig og nøytral leverandør av tekniske kontroller og analyser i Fiskum og sentrale Østlandet.",
+  alternates: { canonical: `${siteConfig.url}/om-oss` },
 };
 
 export default function OmOssPage() {

@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 
 import { ArticleCard } from "@/components/article-card";
 import { articles } from "@/content/articles";
+import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Artikler",
   description:
     "Artikler og nyheter fra Teknisk Byggkontroll AS om innregulering, radonmåling, termografi og prosjektledelse.",
+  alternates: { canonical: `${siteConfig.url}/artikler` },
 };
 
 export default function ArtiklerPage() {

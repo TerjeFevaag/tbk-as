@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 
 import { ServiceCard } from "@/components/service-card";
 import { services } from "@/content/services";
+import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Tjenester",
   description:
     "Innregulering, uavhengig kontroll i byggesak og sprinklerkontroll fra Teknisk Byggkontroll AS.",
+  alternates: { canonical: `${siteConfig.url}/tjenester` },
 };
 
 export default function TjenesterPage() {

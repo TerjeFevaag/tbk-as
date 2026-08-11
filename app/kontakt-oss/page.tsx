@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Kontakt oss",
   description:
     "Ta kontakt med Teknisk Byggkontroll AS for innregulering, uavhengig kontroll i byggesak eller sprinklerkontroll.",
+  alternates: { canonical: `${siteConfig.url}/kontakt-oss` },
 };
 
 export default function KontaktOssPage() {

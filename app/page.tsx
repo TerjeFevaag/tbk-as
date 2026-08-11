@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Hero } from "@/components/hero";
 import { ServiceCard } from "@/components/service-card";
 import { services } from "@/content/services";
+import { siteConfig } from "@/content/site";
+
+export const metadata: Metadata = {
+  alternates: { canonical: siteConfig.url },
+};
 
 export default function Home() {
   return (
