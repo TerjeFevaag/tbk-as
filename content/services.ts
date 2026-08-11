@@ -3,6 +3,7 @@ export type Service = {
   name: string;
   shortDescription: string;
   heroImage: string; // path under /public/images
+  hasRealImage?: boolean; // true once a real photo exists on disk for heroImage (see Task 8)
   sections: { heading: string; body: string[] }[]; // body = paragraphs
   bullets?: { heading: string; items: string[] }[];
 };
@@ -14,6 +15,7 @@ export const services: Service[] = [
     shortDescription:
       "Innregulering av varme- og kjøleanlegg gir jevnere temperatur, lavere energibruk og bedre komfort.",
     heroImage: "/images/services/innregulering-hero.jpg",
+    hasRealImage: true,
     sections: [
       {
         heading: "Hvorfor bør varme- og kjøleanlegg innreguleres",
@@ -136,6 +138,7 @@ export const services: Service[] = [
     shortDescription:
       "FG-kontroll av sprinkleranlegg avdekker feil, mangler og endringer som kan redusere anleggets evne til å begrense eller slokke en brann.",
     heroImage: "/images/services/sprinkler-hero.jpg",
+    hasRealImage: true,
     sections: [
       {
         heading: "FG-kontroll av sprinkleranlegg",
