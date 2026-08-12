@@ -13,9 +13,11 @@ WordPress; this is a clean Next.js app pushed to GitHub (`TerjeFevaag/tbk-as`,
 **Status: the initial rebuild is complete and merged to `master`.** All 13 tasks
 from the implementation plan below have shipped, plus several rounds of
 client-requested follow-up changes (logo swap, nav dropdown, footer credit,
-image-to-page reconciliation, SEO/EEAT pass — see git log for the full history).
-This file now documents the site as it actually is; treat it as the source of
-truth over the plan/spec docs where they've diverged.
+image-to-page reconciliation, SEO/EEAT pass, restoring the homepage's
+"Kontroll på energi og inneklima" and "Artikler" sections that the initial
+rebuild had dropped — see git log for the full history). This file now
+documents the site as it actually is; treat it as the source of truth over the
+plan/spec docs where they've diverged.
 
 The original design decisions and rationale (still useful for *why*, even
 though the build is done) live in:
@@ -62,6 +64,21 @@ yes, for anything more than a one-line fix — see Git / GitHub below).
 - Main nav: "Tjenester" shows the 3 services as a dropdown (hover/focus on
   desktop, tap-to-expand accordion on mobile) — see `components/site-header.tsx`.
 
+## Homepage structure
+
+`app/page.tsx` sections, top to bottom — keep this order, all of it was
+restored from the old site's homepage after an earlier rebuild pass dropped
+two of them:
+
+1. `Hero`
+2. Tjenester (service cards)
+3. "Kontroll på energi og inneklima" — photo + copy block on the company's
+   energi/inneklima expertise, reusing `innregulering-1.png`.
+4. "Uavhengig og nøytral" quote band (`bg-brand-bg`)
+5. "Artikler" — latest 3 articles (`ArticleCard`, sorted by `publishedAt`
+   desc) plus a "Se alle artikler" link to `/artikler`.
+6. Closing contact CTA band (`bg-brand-slate`)
+
 ## Scope guardrails (don't relitigate these — they were explicitly decided)
 
 - **3 services only**: Innregulering, Uavhengig kontroll i byggesak, Sprinklerkontroll.
@@ -94,10 +111,16 @@ yes, for anything more than a one-line fix — see Git / GitHub below).
   - `Innregulering vent 3.png` (a flat vector illustration of two workers and
     ductwork) was excluded entirely — it reads as AI-generated/synthetic, not a
     real photo, and this site's rule is real photos only.
-  - The "Radonmåling" article's only unused source image (a cartoon shaking-house
-    icon) was also excluded on the same real-photos-only basis.
-  - Both exclusions were flagged to the user rather than decided silently; ask
-    before re-adding either if this comes up again.
+- **Two articles use old low-quality images by explicit client override** of the
+  real-photos-only rule, not an oversight: `innregulering-varmeanlegg`'s cover is
+  a clip-art heating-balancing diagram, and `radonmaling-vinterhalvaret`'s cover
+  is a cartoon shaking-house icon (both sourced from the old WordPress export).
+  Both were flagged to the user as sub-real-photo quality before being added
+  back — if this comes up again, don't silently swap them for something else.
+  Two other gaps remain unresolved because no source image exists at all: the
+  `leier-du-ut-bolig` article and the `uavhengig-kontroll-i-byggesak` service
+  (still on the gradient placeholder) — ask the user for real photos from Olav
+  before adding anything there.
 - Vercel project setup and `tbk-as.no` DNS cutover are **out of scope** — the user
   handles that themselves once the repo is ready.
 
