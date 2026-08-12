@@ -15,6 +15,8 @@ export const articles: Article[] = [
     publishedAt: "2015-02-09",
     excerpt:
       "Et godt innregulert varmeanlegg gir lavere driftskostnader og bedre inneklima - ofte er innsparingen så stor at innreguleringen betaler seg selv det første driftsåret.",
+    coverImage:
+      "/images/articles/innregulering-varmeanlegg/innregulering-varmeanlegg-balansering.png",
     body: [
       "Innregulering av varmeanlegg er trolig den viktigste arbeidsoppgaven på ditt nye vannbårende varmesystem. Ett godt innregulert oppvarmingssystem bidrar til lave driftskostnader og et godt inneklima med høy komfort. Erfaring viser at kostnader til innregulering av varmeanlegg ofte er innspart det første driftsåret på grunn av vesentlig lavere fyringskostnader, en besparelse på 15-30% er ikke unormalt.",
     ],
@@ -79,6 +81,7 @@ export const articles: Article[] = [
     publishedAt: "2015-02-09",
     excerpt:
       "Radonmåling bør gjennomføres i den kalde årstiden, med sporfilm over minst to måneder fra midten av oktober til midten av april, for å få et representativt resultat.",
+    coverImage: "/images/articles/radonmaling-vinterhalvaret/radon-illustrasjon.jpg",
     body: [
       "Nå er tiden inne for å gjennomføre måling av radon i ditt bygg. Radon skal måles i den kalde årstiden da radoninnholdet i luften er mest stabil. Godkjent radonmåling utføres med sporfilm i minimum 2 måneder, fortrinnsvis i perioden midten av oktober til midten av april. Ta kontakt med Teknisk Byggkontroll for gjennomføring av radonmåling og eventuelt avklaring av nødvendige tiltak.",
     ],
