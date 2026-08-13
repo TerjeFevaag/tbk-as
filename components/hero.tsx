@@ -7,14 +7,15 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[calc(100vh-5rem)] w-full items-center overflow-hidden bg-brand-slate">
       <Image
-        src="/images/services/sprinkler/sprinkler-1.jpg"
+        src="/images/services/sprinkler/sprinkler-4.jpg"
         alt=""
         fill
         priority
         sizes="100vw"
         className="anim-kenburns object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/55 to-black/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
 
       <div className="relative mx-auto w-full max-w-6xl px-6 py-32">
         <p
