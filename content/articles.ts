@@ -217,13 +217,63 @@ export const articles: Article[] = [
     slug: "lekker-boligen-din-varme",
     title: "Lekker boligen din varme?",
     publishedAt: "2013-05-12",
+    updatedAt: "2026-08-13",
     excerpt:
-      "Termografering avdekker isolasjonsfeil, kuldebroer og luftlekkasjer ved hjelp av varmekamera - en metode som kan vise akkurat hvor boligen din taper varme, spesielt om vinteren.",
+      "Termografering med varmekamera avdekker kuldebroer, manglende isolasjon og luftlekkasjer – og viser nøyaktig hvor boligen taper varme. Størst utbytte får du i den kalde årstiden.",
     coverImage: "/images/articles/lekker-boligen-din-varme/termografi-varmebilde.gif",
     body: [
-      "Termografering er en metode som avdekker mangelfull isolering, kuldebroer og luftlekkasjer.",
-      "- Spesielt i vintermånedene, når temperaturforskjellen inne og ute er størst, kan det være store energitap i boliger. Vi tror mange vil bli overrasket når de ser hvor mye varme boligen deres lekker, og hvor lekkasjene er, sier spesialrådgiver Sverre Heimdal i Enova.",
-      "Termografering er en metode for å avdekke mangelfull isolering, kuldebroer og luftlekkasjer. Undersøkelsen utføres av en termograf som analyserer bilder tatt med et spesialkamera som ser temperaturforskjeller.",
+      "Et hus kan se tett og velisolert ut, men likevel lekke varme i det stille. Termografering med varmekamera gjør de usynlige varmetapene synlige – og viser hvor, og ofte hvorfor, boligen taper energi.",
+    ],
+    sections: [
+      {
+        heading: "Hva er termografering?",
+        body: [
+          "Termografering er en berøringsfri metode der et varmekamera (infrarødt kamera) registrerer overflatetemperaturer og gjør dem synlige som et fargebilde. Kalde og varme flater trer tydelig fram, slik at avvik i bygningskroppen kan lokaliseres uten å åpne konstruksjoner.",
+          "Metoden er beskrevet i standarden NS-EN 13187, som angir hvordan termiske avvik i bygningskroppen påvises med infrarød teknikk. Riktig tolkning krever bygningsteknisk kunnskap – et varmekamera viser temperaturforskjeller, men det er fagpersonen som forstår hva de betyr.",
+        ],
+      },
+      {
+        heading: "Hva kan termografering avdekke?",
+        items: [
+          "Manglende eller mangelfull isolasjon i vegger, tak og gulv.",
+          "Kuldebroer der konstruksjonen leder varme ut.",
+          "Luftlekkasjer rundt vinduer, dører, gjennomføringer og overganger.",
+          "Fukt og fuktskader som gir avvikende overflatetemperatur.",
+          "Feil i vannbåren gulvvarme, for eksempel rørkurser uten sirkulasjon.",
+          "Enkelte elektriske feil, som varmgang i tavler og kontakter.",
+        ],
+      },
+      {
+        heading: "Når bør termografering gjøres?",
+        body: [
+          "Termografering gir best resultat i den kalde årstiden. For å vurdere isolasjon bør det være minst rundt 15 °C temperaturforskjell mellom inne og ute. For å finne luftlekkasjer holder det gjerne med en mindre forskjell, i størrelsesorden 5 °C.",
+          "Bygget bør ikke være oppvarmet av direkte sol under målingen, fordi soloppvarming maskerer de reelle temperaturforskjellene. Derfor utføres målingen ofte tidlig på dagen, i overskyet vær eller på nordsiden av bygget.",
+        ],
+      },
+      {
+        heading: "Termografering og trykktesting",
+        body: [
+          "Termografering kombineres ofte med trykktesting (lufttetthetsmåling). Ved å sette bygget under undertrykk trekkes uteluft inn gjennom utettheter, slik at luftlekkasjene blir tydeligere – både å lokalisere og å vurdere omfanget av.",
+          "Sammen gir de to metodene et godt bilde av byggets lufttetthet og hvor tiltak vil ha størst effekt.",
+        ],
+      },
+      {
+        heading: "Hva får du ut av en termografering?",
+        body: ["En termografering gir et konkret grunnlag for å prioritere tiltak:"],
+        items: [
+          "Dokumentasjon – med bilder – av hvor varmen faktisk forsvinner.",
+          "Grunnlag for å prioritere etterisolering og tetting der det monner mest.",
+          "Kontroll av utført arbeid, for eksempel etter etterisolering eller ombygging.",
+          "Avdekking av skjulte bygg- og fuktproblemer før de utvikler seg.",
+        ],
+      },
+      {
+        heading: "Fra synsing til dokumentert kunnskap",
+        body: [
+          "Enova har påpekt at mange blir overrasket over hvor mye varme boligen taper – og hvor lekkasjene faktisk sitter. Et varmekamera flytter dette fra synsing til dokumentert kunnskap.",
+          "Teknisk Byggkontroll utfører termografering som en del av arbeidet med energi og inneklima. Som uavhengig kontrollør er vi ikke bundet til noen leverandør, og vurderer bygget slik det faktisk er. Lurer du på hvor boligen eller bygget taper varme? Ta kontakt for en vurdering.",
+        ],
+      },
     ],
   },
   {
