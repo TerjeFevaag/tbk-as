@@ -2,6 +2,7 @@ export type ArticleSection = {
   heading: string;
   body?: string[]; // paragraphs under the heading
   items?: string[]; // optional bullet list after the paragraphs
+  diagram?: string; // optional named schematic rendered after body/items (see ArticleDiagram)
 };
 
 export type Article = {
@@ -26,8 +27,6 @@ export const articles: Article[] = [
     updatedAt: "2026-08-13",
     excerpt:
       "Et riktig innregulert varmeanlegg gir jevn temperatur, lavere energibruk og bedre komfort. I dårlig innregulerte anlegg er sparepotensialet så stort at innreguleringen ofte betaler seg selv i løpet av kort tid.",
-    coverImage:
-      "/images/articles/innregulering-varmeanlegg/innregulering-varmeanlegg-balansering.png",
     body: [
       "Innregulering er trolig den viktigste – og mest oversette – arbeidsoppgaven på et nytt vannbårent varmeanlegg. Et riktig innregulert anlegg leverer riktig vannmengde til hver kurs, gir jevn temperatur i hele bygget og lar varmekilden arbeide effektivt. Resultatet er lavere driftskostnader, bedre komfort og mindre slitasje på pumper og ventiler.",
     ],
@@ -38,6 +37,7 @@ export const articles: Article[] = [
           "Vannet i et varmeanlegg følger naturlig veien med minst motstand. Uten innregulering får kurser nær pumpen for stor vannmengde, mens kurser lenger unna får for lite. Noen rom blir for varme, mens andre aldri når ønsket temperatur.",
           "Ved innregulering måles og justeres vannmengdene slik at radiatorer, gulvvarmekurser og varmebatterier får akkurat den mengden de er dimensjonert for. Arbeidet utføres normalt etter proporsjonalmetoden, der strupe- og reguleringsventiler forinnstilles og deretter kontrollmåles mot prosjekterte verdier.",
         ],
+        diagram: "innregulering-balansering",
       },
       {
         heading: "Tegn på at anlegget ikke er innregulert",

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { ArticleDiagram } from "@/components/article-diagram";
 import { formatArticleDate } from "@/components/article-card";
 import { articles } from "@/content/articles";
 import { siteConfig } from "@/content/site";
@@ -164,6 +165,7 @@ export default async function ArticleDetailPage({
                 ))}
               </ul>
             )}
+            {section.diagram && <ArticleDiagram name={section.diagram} />}
           </div>
         ))}
 
