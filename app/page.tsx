@@ -43,11 +43,11 @@ export default function Home() {
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-brand-slate/90 md:text-lg">
               Teknisk Byggkontroll har lang erfaring og høy kompetanse innen
-              energiøkonomisering og inneklima – både som håndverker,
-              entreprenør og byggherre. Vi kvalitetssikrer bygg og tekniske
-              installasjoner gjennom uavhengig kontroll, innregulering og
-              sprinklerkontroll, slik at anlegget fungerer som prosjektert og
-              energien ikke går til spille.
+              energiøkonomisering og inneklima. Som en uavhengig tredjepart
+              kvalitetssikrer vi bygg og tekniske installasjoner gjennom
+              uavhengig kontroll, innregulering og sprinklerkontroll – og
+              dokumenterer resultatet i tydelige rapporter, slik at anlegget
+              fungerer som prosjektert og energien ikke går til spille.
             </p>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-brand-slate/90 md:text-lg">
               Har du spørsmål eller et problem med energiforbruk eller
