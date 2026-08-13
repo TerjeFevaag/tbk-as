@@ -131,6 +131,34 @@ export default async function ArticleDetailPage({
           ))}
         </div>
 
+        {article.sections?.map((section, index) => (
+          <div key={index} className="mt-10">
+            <h2 className="font-serif text-2xl text-brand-slate md:text-3xl">
+              {section.heading}
+            </h2>
+            {section.body && section.body.length > 0 && (
+              <div className="mt-4 space-y-4 text-base leading-relaxed text-brand-slate/90 md:text-lg">
+                {section.body.map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
+              </div>
+            )}
+            {section.items && section.items.length > 0 && (
+              <ul className="mt-4 space-y-2 text-base leading-relaxed text-brand-slate/90 md:text-lg">
+                {section.items.map((item, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+
         {article.images && article.images.length > 0 && (
           <div className="mt-10 grid grid-cols-2 gap-3">
             {article.images.map((src) => (

@@ -1,3 +1,9 @@
+export type ArticleSection = {
+  heading: string;
+  body?: string[]; // paragraphs under the heading
+  items?: string[]; // optional bullet list after the paragraphs
+};
+
 export type Article = {
   slug: string;
   title: string;
@@ -5,20 +11,89 @@ export type Article = {
   excerpt: string;
   coverImage?: string;
   images?: string[]; // additional real photos shown after the article body
-  body: string[]; // paragraphs, Norwegian, HTML-stripped
+  body: string[]; // lead paragraphs, Norwegian, HTML-stripped
+  // Optional richer structure (H2 headings + paragraphs + bullets) rendered
+  // after the lead paragraphs. Articles without this keep rendering just `body`.
+  sections?: ArticleSection[];
 };
 
 export const articles: Article[] = [
   {
     slug: "innregulering-varmeanlegg",
-    title: "Innregulering Varmeanlegg",
+    title: "Innregulering av varmeanlegg",
     publishedAt: "2015-02-09",
     excerpt:
-      "Et godt innregulert varmeanlegg gir lavere driftskostnader og bedre inneklima - ofte er innsparingen så stor at innreguleringen betaler seg selv det første driftsåret.",
+      "Et riktig innregulert varmeanlegg gir jevn temperatur, lavere energibruk og bedre komfort. I dårlig innregulerte anlegg er sparepotensialet så stort at innreguleringen ofte betaler seg selv i løpet av kort tid.",
     coverImage:
       "/images/articles/innregulering-varmeanlegg/innregulering-varmeanlegg-balansering.png",
     body: [
-      "Innregulering av varmeanlegg er trolig den viktigste arbeidsoppgaven på ditt nye vannbårende varmesystem. Ett godt innregulert oppvarmingssystem bidrar til lave driftskostnader og et godt inneklima med høy komfort. Erfaring viser at kostnader til innregulering av varmeanlegg ofte er innspart det første driftsåret på grunn av vesentlig lavere fyringskostnader, en besparelse på 15-30% er ikke unormalt.",
+      "Innregulering er trolig den viktigste – og mest oversette – arbeidsoppgaven på et nytt vannbårent varmeanlegg. Et riktig innregulert anlegg leverer riktig vannmengde til hver kurs, gir jevn temperatur i hele bygget og lar varmekilden arbeide effektivt. Resultatet er lavere driftskostnader, bedre komfort og mindre slitasje på pumper og ventiler.",
+    ],
+    sections: [
+      {
+        heading: "Hva er innregulering av et varmeanlegg?",
+        body: [
+          "Vannet i et varmeanlegg følger naturlig veien med minst motstand. Uten innregulering får kurser nær pumpen for stor vannmengde, mens kurser lenger unna får for lite. Noen rom blir for varme, mens andre aldri når ønsket temperatur.",
+          "Ved innregulering måles og justeres vannmengdene slik at radiatorer, gulvvarmekurser og varmebatterier får akkurat den mengden de er dimensjonert for. Arbeidet utføres normalt etter proporsjonalmetoden, der strupe- og reguleringsventiler forinnstilles og deretter kontrollmåles mot prosjekterte verdier.",
+        ],
+      },
+      {
+        heading: "Tegn på at anlegget ikke er innregulert",
+        items: [
+          "Ujevn temperatur – noen rom blir for varme, andre for kalde.",
+          "Sus og støy i ventiler og rør.",
+          "Høyere energibruk enn forventet.",
+          "Pumpen går på høy hastighet for å kompensere.",
+          "Liten forskjell mellom tur- og returtemperatur (lav ΔT).",
+          "Manglende dokumentasjon på vannmengder og tidligere innregulering.",
+        ],
+      },
+      {
+        heading: "Hva vi kontrollerer og justerer",
+        body: [
+          "En grundig innregulering handler om mer enn å skru på en ventil. Vi gjennomgår anleggsunderlaget og kontrollerer at anlegget fungerer slik det er prosjektert:",
+        ],
+        items: [
+          "Forinnstilling av strupe- og reguleringsventiler mot beregnede vannmengder.",
+          "Måling av vannmengder og differansetrykk på tvers av anlegget.",
+          "Innstilling av differansetrykkregulatorer der anlegget har variabel last.",
+          "Kontroll og optimalisering av turtallsstyrt sirkulasjonspumpe.",
+          "Kontroll av tur- og returtemperatur (ΔT) mot prosjekterte verdier.",
+          "Funksjonskontroll av reguleringen, slik at ventiler og romstyring reagerer stabilt.",
+        ],
+      },
+      {
+        heading: "Hvor mye kan du spare?",
+        body: [
+          "Sparepotensialet avhenger av anleggets tilstand. I anlegg som allerede fungerer godt, er gevinsten gjerne 5–15 %. I eldre eller dårlig innregulerte anlegg rapporterer bransjen ofte 20–30 % lavere energibruk til oppvarming.",
+          "Besparelsen kommer først og fremst fra mindre overoppvarming, lavere pumpehastighet og redusert differansetrykk, og fra bedre temperaturforskjell mellom tur- og returvann. En lav returtemperatur gir i tillegg høyere virkningsgrad for kondenserende kjeler og varmepumper.",
+          "Fordi driftskostnadene faller umiddelbart, er det ikke uvanlig at innreguleringen er tjent inn allerede det første driftsåret.",
+        ],
+      },
+      {
+        heading: "Dokumentert resultat: innreguleringsprotokollen",
+        body: [
+          "Arbeidet avsluttes med en innreguleringsprotokoll som dokumenterer både prosjekterte og målte verdier, i tråd med anerkjent metodikk og gjeldende krav til vannbårne varmeanlegg (blant annet NS-EN 14336). Protokollen viser at anlegget faktisk leverer de vannmengdene det er dimensjonert for, og gir et etterprøvbart grunnlag for videre drift, vedlikehold og energioppfølging.",
+          "Som uavhengig kontrollør er vi ikke bundet til noen leverandør eller entreprenør. Vi dokumenterer tilstanden slik den er – ikke slik den burde vært.",
+        ],
+      },
+      {
+        heading: "Når bør varmeanlegget innreguleres?",
+        items: [
+          "Ved ferdigstillelse av et nytt bygg eller varmeanlegg.",
+          "Etter ombygging, utvidelse eller utskifting av pumper, ventiler eller varmekilde.",
+          "Når bygget har vedvarende ujevn temperatur eller støy i anlegget.",
+          "Når energibruken er høyere enn forventet.",
+          "Når anlegget ikke oppnår ønsket tur- og returtemperatur.",
+          "Når det mangler dokumentasjon på tidligere innregulering.",
+        ],
+      },
+      {
+        heading: "Trenger anlegget ditt en gjennomgang?",
+        body: [
+          "Har bygget ujevn varme, støy eller unormalt høyt energiforbruk, bør vannmengder og innregulering kontrolleres. Ta kontakt for en uforpliktende vurdering av anlegget.",
+        ],
+      },
     ],
   },
   {
