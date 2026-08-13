@@ -31,6 +31,7 @@ export async function generateMetadata({
       url: `${siteConfig.url}/artikler/${article.slug}`,
       type: "article",
       publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt ?? article.publishedAt,
       images: article.coverImage ? [{ url: article.coverImage }] : undefined,
     },
   };
@@ -51,6 +52,7 @@ export default async function ArticleDetailPage({
     headline: article.title,
     description: article.excerpt,
     datePublished: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
     image: article.coverImage ? `${siteConfig.url}${article.coverImage}` : undefined,
     author: {
       "@type": "Person",
@@ -123,6 +125,12 @@ export default async function ArticleDetailPage({
             Skrevet av <span className="text-brand-slate">Olav L. Strøm</span>, uavhengig
             kontrollør hos {siteConfig.shortName}
           </p>
+          {article.updatedAt && article.updatedAt !== article.publishedAt && (
+            <>
+              <span aria-hidden="true">·</span>
+              <p>Oppdatert {formatArticleDate(article.updatedAt)}</p>
+            </>
+          )}
         </div>
 
         <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-slate/90 md:text-lg">

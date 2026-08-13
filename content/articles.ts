@@ -8,6 +8,7 @@ export type Article = {
   slug: string;
   title: string;
   publishedAt: string; // ISO date, best-effort from original if findable, else omit precision to YYYY-MM
+  updatedAt?: string; // ISO date of a substantial rewrite/refresh; shown as "Oppdatert" and emitted as dateModified
   excerpt: string;
   coverImage?: string;
   images?: string[]; // additional real photos shown after the article body
@@ -22,6 +23,7 @@ export const articles: Article[] = [
     slug: "innregulering-varmeanlegg",
     title: "Innregulering av varmeanlegg",
     publishedAt: "2015-02-09",
+    updatedAt: "2026-08-13",
     excerpt:
       "Et riktig innregulert varmeanlegg gir jevn temperatur, lavere energibruk og bedre komfort. I dårlig innregulerte anlegg er sparepotensialet så stort at innreguleringen ofte betaler seg selv i løpet av kort tid.",
     coverImage:
