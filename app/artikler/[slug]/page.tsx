@@ -170,20 +170,24 @@ export default async function ArticleDetailPage({
         ))}
 
         {article.images && article.images.length > 0 && (
-          <div className="mt-10 grid grid-cols-2 gap-3">
-            {article.images.map((src) => (
-              <div
-                key={src}
-                className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-bg"
-              >
-                <Image
-                  src={src}
-                  alt={`${article.title} — bilde fra oppdrag`}
-                  fill
-                  sizes="50vw"
-                  className="object-cover"
-                />
-              </div>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            {article.images.map((image) => (
+              <figure key={image.src}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-bg">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                {image.caption && (
+                  <figcaption className="mt-2 text-sm leading-relaxed text-brand-gray">
+                    {image.caption}
+                  </figcaption>
+                )}
+              </figure>
             ))}
           </div>
         )}

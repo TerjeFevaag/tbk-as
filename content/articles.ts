@@ -5,6 +5,12 @@ export type ArticleSection = {
   diagram?: string; // optional named schematic rendered after body/items (see ArticleDiagram)
 };
 
+export type ArticleImage = {
+  src: string; // path under /public/images
+  alt: string; // descriptive alt text (accessibility + SEO)
+  caption?: string; // optional visible caption shown under the image
+};
+
 export type Article = {
   slug: string;
   title: string;
@@ -12,7 +18,7 @@ export type Article = {
   updatedAt?: string; // ISO date of a substantial rewrite/refresh; shown as "Oppdatert" and emitted as dateModified
   excerpt: string;
   coverImage?: string;
-  images?: string[]; // additional real photos shown after the article body
+  images?: ArticleImage[]; // additional real photos shown after the article body
   body: string[]; // lead paragraphs, Norwegian, HTML-stripped
   // Optional richer structure (H2 headings + paragraphs + bullets) rendered
   // after the lead paragraphs. Articles without this keep rendering just `body`.
@@ -100,18 +106,100 @@ export const articles: Article[] = [
   },
   {
     slug: "innregulering-ventilasjon",
-    title: "Innregulering Ventilasjon",
+    title: "Innregulering av ventilasjonsanlegg",
     publishedAt: "2015-02-09",
+    updatedAt: "2026-08-13",
     excerpt:
-      "Riktig innregulering av ventilasjonsanlegget sikrer at prosjekterte luftmengder faktisk leveres til rommene, og er en forutsetning for lavt energiforbruk i moderne, behovsstyrte ventilasjonsanlegg.",
-    coverImage: "/images/articles/innregulering-ventilasjon/ventilasjon-innregulering.jpg",
+      "Riktig innregulering sikrer at prosjekterte luftmengder faktisk leveres til hvert rom. Det er en forutsetning for godt inneklima og lavt energiforbruk i moderne, behovsstyrte ventilasjonsanlegg.",
+    coverImage: "/images/articles/innregulering-ventilasjon/ventilasjon-2.jpg",
     images: [
-      "/images/articles/innregulering-ventilasjon/ventilasjon-2.jpg",
-      "/images/articles/innregulering-ventilasjon/ventilasjon-3.jpg",
+      {
+        src: "/images/articles/innregulering-ventilasjon/ventilasjon-innregulering.jpg",
+        alt: "Kontrollør måler luftmengde med målehette (balometer) på en takventil.",
+        caption:
+          "Luftmengdene måles på hver ventil med målehette (balometer) og sammenlignes med prosjekterte verdier.",
+      },
+      {
+        src: "/images/articles/innregulering-ventilasjon/ventilasjon-3.jpg",
+        alt: "Måling av luftmengde med målehette på et større ventilasjonsanlegg.",
+        caption:
+          "Måling og justering utføres punkt for punkt til hele anlegget er i balanse.",
+      },
     ],
     body: [
-      "Innregulering av ventilasjonsanlegg er trolig den viktigste arbeidsoppgaven på ditt ventilasjons- og klimasystem. Innreguleringen er også funksjonskontroll som vil avdekke om de prosjekterte mengder og effekter leveres til ønsket rom. Dagens ventilasjonsanlegg er ofte komplekse da de skal samarbeide med byggets varme-, kjøle-, automatikk- og EL-anlegg. For å oppnå dagens krav til energiforbruk i bygninger er man avhengig av å benytte behovstyrte ventilasjonsanlegg som også samarbeider med bygget øvrige tekniske anlegg.",
-      "Teknisk Byggkontroll utfører innregulering av VAV-, CAV- og DCV baserte ventilasjonsanlegg.",
+      "Innregulering er trolig den viktigste arbeidsoppgaven på et nytt ventilasjonsanlegg – og samtidig en funksjonskontroll. Den avdekker om anlegget faktisk leverer de prosjekterte luftmengdene til hvert rom. Uten riktig innregulering får noen rom for lite luft og dårlig inneklima, mens andre får for mye – med unødvendig energibruk, trekk og støy som resultat.",
+    ],
+    sections: [
+      {
+        heading: "Hva er innregulering av et ventilasjonsanlegg?",
+        body: [
+          "Ved innregulering måles luftmengdene til og fra alle rom, og spjeld og ventiler justeres slik at hvert rom får den mengden det er prosjektert for. Luftmengdene måles på ventiler og armaturer med målehette (balometer), og anlegget balanseres normalt etter proporsjonalmetoden.",
+          "Prinsippet i proporsjonalmetoden er at forholdet mellom luftmengdene i to grener holder seg konstant selv om totalmengden endres. Da kan man balansere grenene mot hverandre først, og justere hovedmengden til slutt – uten å måtte gå tilbake og korrigere.",
+        ],
+      },
+      {
+        heading: "Moderne anlegg er behovsstyrte",
+        body: [
+          "Dagens ventilasjonsanlegg er ofte komplekse. De skal samarbeide med byggets varme-, kjøle-, automatikk- og el-anlegg, og for å nå energikravene benyttes som regel behovsstyrt ventilasjon (DCV). Da reguleres luftmengden automatisk etter målt behov i hvert rom – for eksempel CO₂, temperatur eller tilstedeværelse.",
+          "Teknisk Byggkontroll utfører innregulering av VAV- (variabel), CAV- (konstant) og DCV-baserte (behovsstyrte) anlegg. Behovsstyrte anlegg krever i tillegg idriftsettelse under normale driftsforhold, der samspillet mellom ventilasjon, varme og kjøling kontrolleres (jf. NS-EN 12599).",
+        ],
+      },
+      {
+        heading: "Hvorfor er innregulering viktig?",
+        body: ["Et anlegg som ikke er innregulert, gir en rekke problemer:"],
+        items: [
+          "For lite luft i enkelte rom – dårlig inneklima, høy CO₂ og tung luft.",
+          "For mye luft i andre rom – unødvendig energibruk, trekk og støy.",
+          "Ubalanse mellom tilluft og avtrekk – kan gi fukt- og trykkproblemer i bygget.",
+          "Høyere vifteeffekt (SFP) enn nødvendig.",
+          "Behovsstyring og automatikk som ikke fungerer som forutsatt.",
+        ],
+      },
+      {
+        heading: "Sammenhengen med energibruk",
+        body: [
+          "I moderne bygg er det først og fremst reduserte luftmengder gjennom behovsstyring og lavere spesifikk vifteeffekt (SFP) som gir energibesparelse. Et riktig innregulert anlegg med lavt kanaltrykk lar viftene arbeide effektivt og bruker bare den luften som faktisk trengs.",
+          "Feil innregulering trekker i motsatt retning: viftene må kompensere med høyere trykk og turtall, og anlegget bruker mer energi enn nødvendig – ofte uten at inneklimaet blir bedre.",
+        ],
+      },
+      {
+        heading: "Hva innreguleringen omfatter",
+        body: [
+          "En fullstendig innregulering dokumenterer at anlegget leverer som prosjektert:",
+        ],
+        items: [
+          "Måling av luftmengder til og fra alle rom med målehette.",
+          "Justering av spjeld og ventiler etter proporsjonalmetoden.",
+          "Kontroll av totale tilluft- og avtrekksmengder og balansen mellom dem.",
+          "Kontroll av vifter, kanaltrykk og spesifikk vifteeffekt (SFP).",
+          "Funksjonskontroll av behovsstyring og samspill med varme og kjøling.",
+          "Innreguleringsprotokoll med prosjekterte og målte verdier.",
+        ],
+      },
+      {
+        heading: "Dokumentert resultat",
+        body: [
+          "Arbeidet avsluttes med en innreguleringsprotokoll som viser prosjekterte og målte luftmengder for hvert punkt i anlegget. Protokollen dokumenterer at anlegget faktisk leverer det som er prosjektert, og gir et etterprøvbart grunnlag for drift, vedlikehold og energioppfølging – i tråd med kravene til måling og kontroll i NS-EN 12599.",
+          "Som uavhengig kontrollør er vi ikke bundet til noen leverandør eller entreprenør. Vi dokumenterer tilstanden slik den er.",
+        ],
+      },
+      {
+        heading: "Når bør anlegget innreguleres?",
+        items: [
+          "Ved ferdigstillelse av et nytt ventilasjonsanlegg.",
+          "Etter ombygging, utvidelse eller endret bruk av lokalene.",
+          "Etter utskifting av vifter, aggregat eller automatikk.",
+          "Når rom har dårlig inneklima, trekk eller støy fra anlegget.",
+          "Når energibruken til ventilasjon er høyere enn forventet.",
+          "Når det mangler dokumentasjon på tidligere innregulering.",
+        ],
+      },
+      {
+        heading: "Trenger anlegget ditt en gjennomgang?",
+        body: [
+          "Har bygget rom med dårlig luft, trekk, støy eller høyt energiforbruk, bør luftmengdene og innreguleringen kontrolleres. Ta kontakt for en uforpliktende vurdering av anlegget.",
+        ],
+      },
     ],
   },
   {
