@@ -5,7 +5,7 @@ import type { Service } from "@/content/services";
 
 export function ServiceCard({ service }: { service: Service }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-sm bg-white ring-1 ring-brand-slate/10 transition-shadow hover:shadow-lg">
+    <article className="group flex h-full flex-col overflow-hidden rounded-sm bg-white ring-1 ring-brand-slate/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-brand-orange/30">
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-bg">
         {service.heroImage ? (
           <Image
@@ -35,7 +35,13 @@ export function ServiceCard({ service }: { service: Service }) {
           href={`/tjenester/${service.slug}`}
           className="mt-5 inline-flex items-center text-sm font-medium text-brand-orange transition-colors hover:text-brand-orange-light"
         >
-          Les mer »
+          Les mer
+          <span
+            aria-hidden="true"
+            className="ml-1 transition-transform duration-300 group-hover:translate-x-1"
+          >
+            »
+          </span>
         </Link>
       </div>
     </article>

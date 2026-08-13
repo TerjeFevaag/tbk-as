@@ -29,3 +29,51 @@ h5,
 h6 {
   font-family: var(--font-fraunces), Georgia, serif;
 }
+
+/* Motion — subtle entrances and finish. Everything lives inside the
+   no-preference media query, so users who prefer reduced motion (and the
+   noscript fallback in layout.tsx) simply get the final, static state. */
+@media (prefers-reduced-motion: no-preference) {
+  /* Scroll-reveal: driven by the <Reveal> client component, which flips
+     data-visible to true when the element scrolls into view. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero entrance — pure CSS, plays on load (no observer needed). */
+  @keyframes tbk-rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .anim-rise {
+    opacity: 0;
+    animation: tbk-rise-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Slow Ken Burns zoom on the hero background photo. */
+  @keyframes tbk-kenburns {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .anim-kenburns {
+    animation: tbk-kenburns 18s ease-out forwards;
+  }
+}
