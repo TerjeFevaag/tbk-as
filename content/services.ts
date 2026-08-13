@@ -108,54 +108,6 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "uavhengig-kontroll-i-byggesak",
-    name: "Uavhengig kontroll i byggesak",
-    shortDescription:
-      "Uavhengig kontroll for tiltaksklasse 1 sikrer at våtrom og lufttetthet oppfyller kravene i plan- og bygningsloven.",
-    // No real photo exists yet for this service; heroImage is intentionally
-    // omitted so the page falls back to the styled gradient placeholder.
-    quickFacts: [
-      "Gjelder: Tiltaksklasse 1",
-      "Fokus: Våtrom og lufttetthet",
-      "Resultat: Uavhengig sluttdokumentasjon",
-    ],
-    sections: [
-      {
-        heading: "Hvorfor uavhengig kontroll?",
-        body: [
-          "Dette reduserer fuktskader, radon- og inneklimaproblemer og gir trygg dokumentasjon ved overtakelse.",
-        ],
-      },
-    ],
-    bullets: [
-      {
-        heading: "Hva kontrolleres?",
-        items: [
-          "Våtrom: fuktsikring, membran, sluk- og avløpsdetaljer, tettsjikt og dokumentasjon av produkter/montasje.",
-          "Lufttetthet: utførelse av oppspenning, gjennomføringer, tetting av overganger og testing (blowdoor/trykktest) der nødvendig.",
-        ],
-      },
-      {
-        heading: "Hvordan gjennomføres kontrollen?",
-        style: "steps",
-        items: [
-          "Avtale om omfang og kontrollpunkter",
-          "Dokumentgjennomgang av tegninger og produktdokumentasjon",
-          "Stedlig inspeksjon og stikkprøver under og etter arbeid",
-          "Rapport med avvik, krav til utbedring og sluttdokumentasjon",
-        ],
-      },
-      {
-        heading: "Fordeler",
-        items: [
-          "Mindre risiko for fuktskader og mugg",
-          "Bedre inneklima og energieffektivitet",
-          "Klare dokumenter ved salg eller garantioppfølging",
-        ],
-      },
-    ],
-  },
-  {
     slug: "sprinklerkontroll",
     name: "Sprinklerkontroll",
     shortDescription:
@@ -271,6 +223,54 @@ export const services: Service[] = [
         body: [
           "En FG-kontroll gir bygningseier et bedre grunnlag for å ivareta brannsikkerheten og dokumentere anleggets tilstand. Målet er ikke bare å oppfylle krav, men å sikre at sprinkleranlegget har best mulige forutsetninger for å fungere ved en brann.",
           "Trenger bygget kontroll av sprinkleranlegget? Ta kontakt for vurdering av anlegget, nødvendig dokumentasjon og kontrollens omfang.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "uavhengig-kontroll-i-byggesak",
+    name: "Uavhengig kontroll i byggesak",
+    shortDescription:
+      "Uavhengig kontroll for tiltaksklasse 1 sikrer at våtrom og lufttetthet oppfyller kravene i plan- og bygningsloven.",
+    // No real photo exists yet for this service; heroImage is intentionally
+    // omitted so the page falls back to the styled gradient placeholder.
+    quickFacts: [
+      "Gjelder: Tiltaksklasse 1",
+      "Fokus: Våtrom og lufttetthet",
+      "Resultat: Uavhengig sluttdokumentasjon",
+    ],
+    sections: [
+      {
+        heading: "Hvorfor uavhengig kontroll?",
+        body: [
+          "Dette reduserer fuktskader, radon- og inneklimaproblemer og gir trygg dokumentasjon ved overtakelse.",
+        ],
+      },
+    ],
+    bullets: [
+      {
+        heading: "Hva kontrolleres?",
+        items: [
+          "Våtrom: fuktsikring, membran, sluk- og avløpsdetaljer, tettsjikt og dokumentasjon av produkter/montasje.",
+          "Lufttetthet: utførelse av oppspenning, gjennomføringer, tetting av overganger og testing (blowdoor/trykktest) der nødvendig.",
+        ],
+      },
+      {
+        heading: "Hvordan gjennomføres kontrollen?",
+        style: "steps",
+        items: [
+          "Avtale om omfang og kontrollpunkter",
+          "Dokumentgjennomgang av tegninger og produktdokumentasjon",
+          "Stedlig inspeksjon og stikkprøver under og etter arbeid",
+          "Rapport med avvik, krav til utbedring og sluttdokumentasjon",
+        ],
+      },
+      {
+        heading: "Fordeler",
+        items: [
+          "Mindre risiko for fuktskader og mugg",
+          "Bedre inneklima og energieffektivitet",
+          "Klare dokumenter ved salg eller garantioppfølging",
         ],
       },
     ],
