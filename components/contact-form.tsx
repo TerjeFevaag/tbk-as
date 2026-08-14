@@ -40,10 +40,14 @@ function validate(values: FormState): FormErrors {
   return errors;
 }
 
+type Status = "idle" | "submitting" | "success" | "error";
+
 export function ContactForm() {
   const [values, setValues] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  // Honeypot: hidden field that real users never fill. Bots often do.
+  const [nettside, setNettside] = useState("");
 
   function handleChange(
     field: keyof FormState,
@@ -53,17 +57,27 @@ export function ContactForm() {
     };
   }
 
-  // TODO(contact-backend): wire this to a real email delivery service (e.g. Resend)
-  // once a backend decision is made. Currently a no-op that only shows a success message.
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
-    setSubmitted(true);
+
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/kontakt", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, nettside }),
+      });
+      if (!res.ok) throw new Error("Sending feilet");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div
         role="status"
@@ -78,6 +92,20 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
+      {/* Honeypot – hidden from users, off-screen and skipped by keyboard. */}
+      <div aria-hidden="true" className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="nettside">Ikke fyll ut dette feltet</label>
+        <input
+          id="nettside"
+          name="nettside"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={nettside}
+          onChange={(e) => setNettside(e.target.value)}
+        />
+      </div>
+
       <div>
         <label
           htmlFor="navn"
@@ -167,11 +195,23 @@ export function ContactForm() {
         )}
       </div>
 
+      {status === "error" && (
+        <p role="alert" className="text-sm text-brand-error">
+          Beklager, meldingen kunne ikke sendes akkurat nå. Prøv igjen, eller
+          ring oss på {" "}
+          <a href="tel:+4794851228" className="font-medium underline">
+            948 51 228
+          </a>
+          .
+        </p>
+      )}
+
       <button
         type="submit"
-        className="inline-flex items-center rounded-sm bg-brand-orange px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-orange-light"
+        disabled={status === "submitting"}
+        className="inline-flex items-center rounded-sm bg-brand-orange px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-orange-light disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Send melding
+        {status === "submitting" ? "Sender …" : "Send melding"}
       </button>
     </form>
   );
