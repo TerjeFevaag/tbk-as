@@ -7,6 +7,11 @@ import type { ReactNode } from "react";
 import { ServiceHeroPlaceholder } from "@/components/service-hero-placeholder";
 import { siteConfig } from "@/content/site";
 import { services, type Service } from "@/content/services";
+import {
+  breadcrumbLd,
+  businessId,
+  jsonLdGraph,
+} from "@/content/structured-data";
 
 type Params = { slug: string };
 
@@ -150,21 +155,22 @@ export default async function ServiceDetailPage({
   const [inlineImage, ...restGalleryImages] = service.galleryImages ?? [];
   const inlineAfterIndex = Math.min(1, service.sections.length - 1);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.name,
-    description: service.shortDescription,
-    provider: {
-      "@type": "LocalBusiness",
-      name: siteConfig.name,
-      telephone: siteConfig.phoneHref.replace("tel:", ""),
-      email: siteConfig.email,
-      address: siteConfig.address,
+  const jsonLd = jsonLdGraph(
+    {
+      "@type": "Service",
+      name: service.name,
+      serviceType: service.name,
+      description: service.shortDescription,
+      provider: { "@id": businessId },
+      areaServed: { "@type": "Place", name: siteConfig.areaServed },
+      url: `${siteConfig.url}/tjenester/${service.slug}`,
     },
-    areaServed: "Sentrale Østlandet, Norge",
-    url: `${siteConfig.url}/tjenester/${service.slug}`,
-  };
+    breadcrumbLd([
+      { name: "Hjem", path: "" },
+      { name: "Tjenester", path: "/tjenester" },
+      { name: service.name, path: `/tjenester/${service.slug}` },
+    ]),
+  );
 
   return (
     <main>

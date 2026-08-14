@@ -11,7 +11,19 @@ import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
+  title: {
+    absolute: "Teknisk Byggkontroll AS – Uavhengig kontroll på Østlandet",
+  },
+  description:
+    "Uavhengig kontrollør på sentrale Østlandet. Vi utfører innregulering av varme- og kjøleanlegg, FG-sprinklerkontroll og uavhengig kontroll i byggesak – med dokumenterte, etterprøvbare rapporter.",
   alternates: { canonical: siteConfig.url },
+  openGraph: {
+    title: "Teknisk Byggkontroll AS – Uavhengig kontroll på Østlandet",
+    description:
+      "Uavhengig kontrollør på sentrale Østlandet: innregulering, FG-sprinklerkontroll og uavhengig kontroll i byggesak.",
+    url: siteConfig.url,
+    type: "website",
+  },
 };
 
 export default function Home() {

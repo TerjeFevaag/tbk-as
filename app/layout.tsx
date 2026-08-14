@@ -5,6 +5,7 @@ import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/content/site";
+import { jsonLdGraph, localBusinessLd, websiteLd } from "@/content/structured-data";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -21,34 +22,20 @@ export const metadata: Metadata = {
     default: "Teknisk Byggkontroll AS",
     template: "%s | Teknisk Byggkontroll AS",
   },
-  description: siteConfig.tagline,
+  description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     siteName: siteConfig.name,
     locale: "nb_NO",
     type: "website",
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: siteConfig.name,
-  image: `${siteConfig.url}/images/logo.png`,
-  telephone: siteConfig.phoneHref.replace("tel:", ""),
-  email: siteConfig.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: siteConfig.address,
-    addressCountry: "NO",
-  },
-  areaServed: "Sentrale Østlandet, Norge",
-  url: siteConfig.url,
-  founder: {
-    "@type": "Person",
-    name: "Olav L. Strøm",
-  },
-};
+const structuredData = jsonLdGraph(localBusinessLd(), websiteLd());
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -62,7 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <SiteHeader />
         <div className="flex-1">{children}</div>

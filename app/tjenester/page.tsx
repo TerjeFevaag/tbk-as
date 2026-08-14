@@ -7,7 +7,7 @@ import { siteConfig } from "@/content/site";
 export const metadata: Metadata = {
   title: "Tjenester",
   description:
-    "Innregulering, uavhengig kontroll i byggesak og sprinklerkontroll fra Teknisk Byggkontroll AS.",
+    "Innregulering av varme- og kjøleanlegg, FG-sprinklerkontroll og uavhengig kontroll i byggesak – utført av en uavhengig og nøytral fagperson på sentrale Østlandet.",
   alternates: { canonical: `${siteConfig.url}/tjenester` },
 };
 

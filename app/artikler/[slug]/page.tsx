@@ -7,6 +7,11 @@ import { ArticleDiagram } from "@/components/article-diagram";
 import { formatArticleDate } from "@/components/article-card";
 import { articles } from "@/content/articles";
 import { siteConfig } from "@/content/site";
+import {
+  breadcrumbLd,
+  businessId,
+  jsonLdGraph,
+} from "@/content/structured-data";
 
 type Params = { slug: string };
 
@@ -47,26 +52,32 @@ export default async function ArticleDetailPage({
   const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: article.title,
-    description: article.excerpt,
-    datePublished: article.publishedAt,
-    dateModified: article.updatedAt ?? article.publishedAt,
-    image: article.coverImage ? `${siteConfig.url}${article.coverImage}` : undefined,
-    author: {
-      "@type": "Person",
-      name: "Olav L. Strøm",
-      jobTitle: "Uavhengig kontrollør",
+  const jsonLd = jsonLdGraph(
+    {
+      "@type": "Article",
+      headline: article.title,
+      description: article.excerpt,
+      datePublished: article.publishedAt,
+      dateModified: article.updatedAt ?? article.publishedAt,
+      image: article.coverImage
+        ? `${siteConfig.url}${article.coverImage}`
+        : `${siteConfig.url}${siteConfig.ogImage}`,
+      inLanguage: "nb-NO",
+      author: {
+        "@type": "Person",
+        name: "Olav L. Strøm",
+        jobTitle: "Uavhengig kontrollør",
+      },
+      publisher: { "@id": businessId },
+      mainEntityOfPage: `${siteConfig.url}/artikler/${article.slug}`,
+      url: `${siteConfig.url}/artikler/${article.slug}`,
     },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    url: `${siteConfig.url}/artikler/${article.slug}`,
-  };
+    breadcrumbLd([
+      { name: "Hjem", path: "" },
+      { name: "Artikler", path: "/artikler" },
+      { name: article.title, path: `/artikler/${article.slug}` },
+    ]),
+  );
 
   return (
     <main>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { siteConfig } from "@/content/site";
+import { breadcrumbLd, businessId, jsonLdGraph } from "@/content/structured-data";
 
 export const metadata: Metadata = {
   title: "Om oss",
@@ -10,9 +11,29 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/om-oss` },
 };
 
+const jsonLd = jsonLdGraph(
+  {
+    "@type": "Person",
+    "@id": `${siteConfig.url}/om-oss#olav`,
+    name: "Olav L. Strøm",
+    jobTitle: "Uavhengig kontrollør",
+    worksFor: { "@id": businessId },
+    image: `${siteConfig.url}/images/olav-strom.jpg`,
+    url: `${siteConfig.url}/om-oss`,
+  },
+  breadcrumbLd([
+    { name: "Hjem", path: "" },
+    { name: "Om oss", path: "/om-oss" },
+  ]),
+);
+
 export default function OmOssPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <p className="text-xs font-medium uppercase tracking-[0.15em] text-brand-orange">
           Om oss
