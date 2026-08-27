@@ -4,12 +4,13 @@ import Link from "next/link";
 import type { Service } from "@/content/services";
 
 export function ServiceCard({ service }: { service: Service }) {
+  const cardImage = service.cardImage ?? service.heroImage;
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-sm bg-white ring-1 ring-brand-slate/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-brand-orange/30">
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-bg">
-        {service.heroImage ? (
+        {cardImage ? (
           <Image
-            src={service.heroImage}
+            src={cardImage}
             alt={`${service.name} — Teknisk Byggkontroll AS`}
             fill
             sizes="(min-width: 768px) 33vw, 100vw"

@@ -6,6 +6,10 @@ export type Service = {
   // for this service — presence of heroImage is what decides whether the
   // real image or the styled gradient placeholder renders (see Task 8).
   heroImage?: string;
+  // Optional separate image for the ServiceCard (homepage / tjenester grid).
+  // Falls back to heroImage when omitted. Use this when the hero banner needs a
+  // wide shot but the card is better served by a different (e.g. portrait) photo.
+  cardImage?: string;
   galleryImages?: string[]; // additional real photos shown further down the detail page (Task 8)
   // Optional embedded video (YouTube privacy-nocookie embed URL) + its title.
   videoUrl?: string;
@@ -115,10 +119,14 @@ export const services: Service[] = [
     name: "Sprinklerkontroll",
     shortDescription:
       "FG-kontroll av sprinkleranlegg avdekker feil, mangler og endringer som kan redusere anleggets evne til å begrense eller slokke en brann.",
-    heroImage: "/images/services/sprinkler/sprinkler-olav.jpg",
+    // Wide, person-free technical shot cropped to banner proportions (a portrait
+    // of Olav gets cropped to the top of his head at banner size). Derived from
+    // sprinkler-3.jpg via a dedicated wide crop.
+    heroImage: "/images/services/sprinkler/sprinkler-hero.jpg",
+    // The card keeps Olav (client's request for the "Våre tjenester" grid).
+    cardImage: "/images/services/sprinkler/sprinkler-olav.jpg",
     galleryImages: [
       "/images/services/sprinkler/sprinkler-kontroll-2.jpg",
-      "/images/services/sprinkler/sprinkler-3.jpg",
       "/images/services/sprinkler/sprinkler-4.jpg",
     ],
     videoUrl: "https://www.youtube-nocookie.com/embed/LEswFSuWHwY",
