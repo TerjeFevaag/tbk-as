@@ -6,7 +6,7 @@ import type { Service } from "@/content/services";
 export function ServiceCard({ service }: { service: Service }) {
   const cardImage = service.cardImage ?? service.heroImage;
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-sm bg-white ring-1 ring-brand-slate/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-brand-orange/30">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-sm bg-white ring-1 ring-brand-slate/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-brand-orange/30">
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-bg">
         {cardImage ? (
           <Image
@@ -34,7 +34,8 @@ export function ServiceCard({ service }: { service: Service }) {
         </p>
         <Link
           href={`/tjenester/${service.slug}`}
-          className="mt-5 inline-flex items-center text-sm font-medium text-brand-orange transition-colors hover:text-brand-orange-light"
+          aria-label={`Les mer om ${service.name}`}
+          className="mt-5 inline-flex items-center text-sm font-medium text-brand-orange transition-colors after:absolute after:inset-0 hover:text-brand-orange-light"
         >
           Les mer
           <span
