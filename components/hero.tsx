@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[calc(100vh-5rem)] w-full items-center overflow-hidden bg-brand-slate">
       <Image
-        src="/images/services/sprinkler/sprinkler-4.jpg"
+        src="/images/hero-olav-kontroll.jpg"
         alt=""
         fill
         priority

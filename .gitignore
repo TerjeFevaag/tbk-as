@@ -3,6 +3,9 @@
 /Teknisk Byggkontroll _ Info, images and text/
 *.zip
 
+# Raw client image originals (processed versions are committed under public/images)
+/public/images/Teknisk Nye bilder/
+
 # Node / Next.js
 node_modules/
 .next/

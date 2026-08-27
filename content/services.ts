@@ -7,6 +7,9 @@ export type Service = {
   // real image or the styled gradient placeholder renders (see Task 8).
   heroImage?: string;
   galleryImages?: string[]; // additional real photos shown further down the detail page (Task 8)
+  // Optional embedded video (YouTube privacy-nocookie embed URL) + its title.
+  videoUrl?: string;
+  videoTitle?: string;
   // A single striking figure pulled from the copy, shown as a stat callout.
   stat?: { value: string; label: string };
   // 3 short, scannable facts shown in the detail page's sidebar card.
@@ -112,13 +115,14 @@ export const services: Service[] = [
     name: "Sprinklerkontroll",
     shortDescription:
       "FG-kontroll av sprinkleranlegg avdekker feil, mangler og endringer som kan redusere anleggets evne til å begrense eller slokke en brann.",
-    heroImage: "/images/services/sprinkler/sprinkler-1.jpg",
+    heroImage: "/images/services/sprinkler/sprinkler-olav.jpg",
     galleryImages: [
-      "/images/services/sprinkler/sprinkler-2.jpg",
+      "/images/services/sprinkler/sprinkler-kontroll-2.jpg",
       "/images/services/sprinkler/sprinkler-3.jpg",
       "/images/services/sprinkler/sprinkler-4.jpg",
-      "/images/services/sprinkler/sprinkler-5.png",
     ],
+    videoUrl: "https://www.youtube-nocookie.com/embed/LEswFSuWHwY",
+    videoTitle: "Sprinklerkontroll – Teknisk Byggkontroll",
     stat: { value: "FG", label: "kontroll utført etter gjeldende FG-regler og prosjekteringsstandard" },
     quickFacts: [
       "Kontrollmetode: FG-kontroll",
@@ -232,12 +236,17 @@ export const services: Service[] = [
     name: "Uavhengig kontroll i byggesak",
     shortDescription:
       "Uavhengig kontroll for tiltaksklasse 1 sikrer at våtrom og lufttetthet oppfyller kravene i plan- og bygningsloven.",
-    // No real photo exists yet for this service; heroImage is intentionally
-    // omitted so the page falls back to the styled gradient placeholder.
+    // heroImage is intentionally omitted so the top falls back to the styled
+    // gradient placeholder (the våtrom drawing below is line art on white and
+    // would sit badly behind the overlaid white title). The client-supplied
+    // våtrom detail drawing is shown inline via galleryImages instead.
     quickFacts: [
       "Gjelder: Tiltaksklasse 1",
       "Fokus: Våtrom og lufttetthet",
       "Resultat: Uavhengig sluttdokumentasjon",
+    ],
+    galleryImages: [
+      "/images/services/uavhengig-kontroll-i-byggesak/uk-vatrom.png",
     ],
     sections: [
       {

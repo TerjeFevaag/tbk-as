@@ -232,6 +232,20 @@ export default async function ServiceDetailPage({
               </div>
             )}
 
+            {service.videoUrl && (
+              <div className="relative mt-10 aspect-video overflow-hidden rounded-sm bg-brand-slate">
+                <iframe
+                  src={service.videoUrl}
+                  title={service.videoTitle ?? service.name}
+                  className="absolute inset-0 h-full w-full"
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            )}
+
             <div className="mt-4 space-y-14 lg:hidden">
               <QuickFactsCard service={service} />
             </div>
