@@ -19,6 +19,10 @@ const navLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  // Desktop dropdown is CSS hover/focus based; this force-hides it right after a
+  // click (otherwise it lingers open because the cursor still hovers the menu).
+  // Reset when the cursor leaves the menu so hover reopens it next time.
+  const [servicesDismissed, setServicesDismissed] = useState(false);
   const pathname = usePathname();
 
   function closeMobileMenu() {
@@ -77,10 +81,17 @@ export function SiteHeader() {
                 const isServices = link.href === "/tjenester";
 
                 return (
-                  <li key={link.href} className={isServices ? "group/services relative" : undefined}>
+                  <li
+                    key={link.href}
+                    className={isServices ? "group/services relative" : undefined}
+                    onMouseLeave={
+                      isServices ? () => setServicesDismissed(false) : undefined
+                    }
+                  >
                     <Link
                       href={link.href}
                       aria-current={active ? "page" : undefined}
+                      onClick={isServices ? () => setServicesDismissed(true) : undefined}
                       className={`group relative flex items-center gap-1.5 py-2 transition-colors duration-200 hover:text-brand-orange ${
                         active ? "text-brand-orange" : ""
                       }`}
@@ -110,12 +121,17 @@ export function SiteHeader() {
                     </Link>
 
                     {isServices && (
-                      <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition-opacity duration-200 group-hover/services:visible group-hover/services:opacity-100 group-focus-within/services:visible group-focus-within/services:opacity-100">
+                      <div
+                        className={`absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition-opacity duration-200 group-hover/services:visible group-hover/services:opacity-100 group-focus-within/services:visible group-focus-within/services:opacity-100 ${
+                          servicesDismissed ? "hidden" : "invisible"
+                        }`}
+                      >
                         <ul className="w-64 rounded-sm bg-white p-2 shadow-lg ring-1 ring-brand-slate/10">
                           {services.map((service) => (
                             <li key={service.slug}>
                               <Link
                                 href={`/tjenester/${service.slug}`}
+                                onClick={() => setServicesDismissed(true)}
                                 className="block rounded-sm px-4 py-2.5 text-sm text-brand-slate transition-colors hover:bg-brand-bg hover:text-brand-orange"
                               >
                                 {service.name}
