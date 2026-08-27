@@ -270,7 +270,13 @@ export default async function ServiceDetailPage({
                   )}
 
                   {index === inlineAfterIndex && inlineImage && (
-                    <div className="relative mt-10 aspect-[16/10] w-full overflow-hidden rounded-sm bg-brand-bg">
+                    <a
+                      href={inlineImage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${service.name} — åpne bildet i full størrelse`}
+                      className="group/zoom relative mt-10 block aspect-[16/10] w-full cursor-zoom-in overflow-hidden rounded-sm bg-brand-bg"
+                    >
                       <Image
                         src={inlineImage}
                         alt={`${service.name} — bilde fra oppdrag`}
@@ -278,7 +284,13 @@ export default async function ServiceDetailPage({
                         sizes="(min-width: 1024px) 66vw, 100vw"
                         className="object-cover"
                       />
-                    </div>
+                      <span className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1.5 rounded-sm bg-brand-slate/85 px-2.5 py-1 text-xs font-medium text-white opacity-0 transition-opacity group-hover/zoom:opacity-100">
+                        <svg aria-hidden="true" viewBox="0 0 20 20" className="h-3.5 w-3.5">
+                          <path d="M9 3a6 6 0 1 0 3.7 10.7l3.8 3.8 1.4-1.4-3.8-3.8A6 6 0 0 0 9 3Zm-4 6a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm3-2v1H7v2h1v1h2v-1h1V8h-1V7H8Z" fill="currentColor" />
+                        </svg>
+                        Forstørr
+                      </span>
+                    </a>
                   )}
                 </div>
               ))}
@@ -316,18 +328,22 @@ export default async function ServiceDetailPage({
                 </h2>
                 <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
                   {restGalleryImages.map((src) => (
-                    <div
+                    <a
                       key={src}
-                      className="relative aspect-square overflow-hidden rounded-sm bg-brand-bg"
+                      href={src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${service.name} — åpne bildet i full størrelse`}
+                      className="group/zoom relative block aspect-square cursor-zoom-in overflow-hidden rounded-sm bg-brand-bg"
                     >
                       <Image
                         src={src}
                         alt={`${service.name} — bilde fra oppdrag`}
                         fill
                         sizes="(min-width: 768px) 33vw, 50vw"
-                        className="object-cover"
+                        className="object-cover transition-transform duration-500 group-hover/zoom:scale-105"
                       />
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>
