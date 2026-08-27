@@ -203,17 +203,6 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "leier-du-ut-bolig",
-    title: "Leier du ut bolig?",
-    publishedAt: "2013-04-30",
-    excerpt:
-      "Alle som leier ut bolig plikter å kontrollere radonnivået i utleieboligen samt å gjøre eventuelle utbedringer ifølge kravene i strålevernforskriften, innen 1. januar 2014.",
-    body: [
-      "Alle som leier ut bolig plikter å kontrollere radonnivået i utleieboligen samt å gjøre eventuelle utbedringer ifølge kravene i strålevernforskriften, innen 1. januar 2014.",
-      "Les mer om radonkontroll av utleiebolig her; Radonnytt.",
-    ],
-  },
-  {
     slug: "lekker-boligen-din-varme",
     title: "Lekker boligen din varme?",
     publishedAt: "2013-05-12",
@@ -274,31 +263,6 @@ export const articles: Article[] = [
           "Teknisk Byggkontroll utfører termografering som en del av arbeidet med energi og inneklima. Som uavhengig kontrollør er vi ikke bundet til noen leverandør, og vurderer bygget slik det faktisk er. Lurer du på hvor boligen eller bygget taper varme? Ta kontakt for en vurdering.",
         ],
       },
-    ],
-  },
-  {
-    slug: "prosjektledelse-frydenhaug-skole",
-    title: "Prosjektledelse Frydenhaug skole",
-    publishedAt: "2015-06-12",
-    excerpt:
-      "Teknisk Byggkontroll ledet VVS-prosjektet for Frydenhaug skole i Drammen - en 5500 m² passivhusskole med solenergi, energibrønner og komplett teknisk anlegg, til en total entreprisekostnad på 27 millioner kroner.",
-    coverImage: "/images/articles/prosjektledelse-frydenhaug-skole/frydenhaug-skole.png",
-    body: [
-      "Teknisk Byggkontroll har utført prosjektledelse for VVS-entreprisen til ny passivhus skole for VITO teknisk entreprenør AS. Frydenhaug Skole er Drammen Kommunale Eiendoms nye flaggskip innen bygg med lave drift- og energikostnader.",
-      "Ny spesialskole på 5500m2 for elever med spesielle behov. Skolen bygges som PassivHus med et prosjektmål på 37 Kw/h pr.m2 levert energi. Levering av total VVS teknisk anlegg med solenergi og varme/kjøling fra energibrønner. Levert 70.000m3/h behandlet luft og 5.000m3/h aggregat til terapibasseng.",
-      "Komplett sanitæranlegg, varmeanlegg med vannbåren gulvvarme og 300 m2 snøsmelteanlegg med komplett SD-anlegg. Bygget er fullsprinklet.",
-      "Total entreprisekostnad kr 27 mill.",
-    ],
-  },
-  {
-    slug: "radonmaling-vinterhalvaret",
-    title: "Radonmåling i vinterhalvåret!",
-    publishedAt: "2015-02-09",
-    excerpt:
-      "Radonmåling bør gjennomføres i den kalde årstiden, med sporfilm over minst to måneder fra midten av oktober til midten av april, for å få et representativt resultat.",
-    coverImage: "/images/articles/radonmaling-vinterhalvaret/radon-illustrasjon.jpg",
-    body: [
-      "Nå er tiden inne for å gjennomføre måling av radon i ditt bygg. Radon skal måles i den kalde årstiden da radoninnholdet i luften er mest stabil. Godkjent radonmåling utføres med sporfilm i minimum 2 måneder, fortrinnsvis i perioden midten av oktober til midten av april. Ta kontakt med Teknisk Byggkontroll for gjennomføring av radonmåling og eventuelt avklaring av nødvendige tiltak.",
     ],
   },
 ];
