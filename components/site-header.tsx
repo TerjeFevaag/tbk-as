@@ -84,7 +84,13 @@ export function SiteHeader() {
                   <li
                     key={link.href}
                     className={isServices ? "group/services relative" : undefined}
-                    onMouseLeave={
+                    // Re-enable the dropdown only when the user deliberately
+                    // re-enters the menu (hover or keyboard focus). Resetting on
+                    // leave would fire immediately and reopen it after a click.
+                    onMouseEnter={
+                      isServices ? () => setServicesDismissed(false) : undefined
+                    }
+                    onFocus={
                       isServices ? () => setServicesDismissed(false) : undefined
                     }
                   >
