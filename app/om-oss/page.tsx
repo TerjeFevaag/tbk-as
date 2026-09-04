@@ -5,7 +5,7 @@ import { siteConfig } from "@/content/site";
 import { breadcrumbLd, businessId, jsonLdGraph } from "@/content/structured-data";
 
 export const metadata: Metadata = {
-  title: "Om oss",
+  title: "Om oss – uavhengig kontrollør på Østlandet",
   description:
     "Møt Olav L. Strøm, uavhengig og nøytral leverandør av tekniske kontroller og analyser i Fiskum og sentrale Østlandet.",
   alternates: { canonical: `${siteConfig.url}/om-oss` },

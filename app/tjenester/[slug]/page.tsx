@@ -4,7 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { ArticleCard } from "@/components/article-card";
 import { ServiceHeroPlaceholder } from "@/components/service-hero-placeholder";
+import { articles } from "@/content/articles";
 import { siteConfig } from "@/content/site";
 import { services, type Service } from "@/content/services";
 import {
@@ -122,7 +124,7 @@ export async function generateMetadata({
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
   return {
-    title: service.name,
+    title: service.seoTitle ?? service.name,
     description: service.shortDescription,
     alternates: { canonical: `${siteConfig.url}/tjenester/${service.slug}` },
     openGraph: {
@@ -154,6 +156,10 @@ export default async function ServiceDetailPage({
   // in a strip near the end so photos don't all pile up in one place.
   const [inlineImage, ...restGalleryImages] = service.galleryImages ?? [];
   const inlineAfterIndex = Math.min(1, service.sections.length - 1);
+
+  const relatedArticles = articles
+    .filter((a) => a.relatedServices?.includes(service.slug))
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
   const jsonLd = jsonLdGraph(
     {
@@ -344,6 +350,18 @@ export default async function ServiceDetailPage({
                         className="object-cover transition-transform duration-500 group-hover/zoom:scale-105"
                       />
                     </a>
+                  ))}
+                </div>
+              </div>
+            )}
+            {relatedArticles.length > 0 && (
+              <div className="mt-14 border-t border-brand-gray/15 pt-10">
+                <h2 className="font-serif text-2xl text-brand-slate md:text-3xl">
+                  Relaterte artikler
+                </h2>
+                <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                  {relatedArticles.map((a) => (
+                    <ArticleCard key={a.slug} article={a} />
                   ))}
                 </div>
               </div>

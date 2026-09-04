@@ -4,8 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ArticleDiagram } from "@/components/article-diagram";
-import { formatArticleDate } from "@/components/article-card";
+import { ArticleCard, formatArticleDate } from "@/components/article-card";
 import { articles } from "@/content/articles";
+import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
 import {
   breadcrumbLd,
@@ -51,6 +52,15 @@ export default async function ArticleDetailPage({
   const { slug } = await params;
   const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
+
+  const relatedServices = (article.relatedServices ?? [])
+    .map((s) => services.find((service) => service.slug === s))
+    .filter((service) => service !== undefined);
+
+  const otherArticles = articles
+    .filter((a) => a.slug !== article.slug)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, 2);
 
   const jsonLd = jsonLdGraph(
     {
@@ -200,6 +210,42 @@ export default async function ArticleDetailPage({
                 )}
               </figure>
             ))}
+          </div>
+        )}
+
+        {relatedServices.length > 0 && (
+          <div className="mt-14 border-t border-brand-gray/15 pt-8">
+            <h2 className="font-serif text-xl text-brand-slate">
+              Relaterte tjenester
+            </h2>
+            <ul className="mt-4 space-y-2">
+              {relatedServices.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/tjenester/${service.slug}`}
+                    className="inline-flex items-center text-base font-medium text-brand-orange transition-colors hover:text-brand-orange-light"
+                  >
+                    {service.name}
+                    <span aria-hidden="true" className="ml-1">
+                      »
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {otherArticles.length > 0 && (
+          <div className="mt-14 border-t border-brand-gray/15 pt-8">
+            <h2 className="font-serif text-2xl text-brand-slate md:text-3xl">
+              Flere fagartikler
+            </h2>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              {otherArticles.map((a) => (
+                <ArticleCard key={a.slug} article={a} />
+              ))}
+            </div>
           </div>
         )}
 

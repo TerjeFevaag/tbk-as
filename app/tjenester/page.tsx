@@ -5,7 +5,7 @@ import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Tjenester",
+  title: "Tekniske kontrolltjenester på Østlandet",
   description:
     "Innregulering av varme- og kjøleanlegg, FG-sprinklerkontroll og uavhengig kontroll i byggesak – utført av en uavhengig og nøytral fagperson på sentrale Østlandet.",
   alternates: { canonical: `${siteConfig.url}/tjenester` },

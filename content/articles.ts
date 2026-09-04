@@ -23,6 +23,10 @@ export type Article = {
   // Optional richer structure (H2 headings + paragraphs + bullets) rendered
   // after the lead paragraphs. Articles without this keep rendering just `body`.
   sections?: ArticleSection[];
+  // Service slugs this article relates to (internal linking / SEO). Drives the
+  // "Relaterte tjenester" block on the article and "Relaterte artikler" on the
+  // service page (reverse lookup).
+  relatedServices?: string[];
 };
 
 export const articles: Article[] = [
@@ -31,6 +35,7 @@ export const articles: Article[] = [
     title: "Innregulering av varmeanlegg",
     publishedAt: "2015-02-09",
     updatedAt: "2026-08-13",
+    relatedServices: ["innregulering"],
     excerpt:
       "Et riktig innregulert varmeanlegg gir jevn temperatur, lavere energibruk og bedre komfort. I dårlig innregulerte anlegg er sparepotensialet så stort at innreguleringen ofte betaler seg selv i løpet av kort tid.",
     body: [
@@ -109,6 +114,7 @@ export const articles: Article[] = [
     title: "Innregulering av ventilasjonsanlegg",
     publishedAt: "2015-02-09",
     updatedAt: "2026-08-13",
+    relatedServices: ["innregulering"],
     excerpt:
       "Riktig innregulering sikrer at prosjekterte luftmengder faktisk leveres til hvert rom. Det er en forutsetning for godt inneklima og lavt energiforbruk i moderne, behovsstyrte ventilasjonsanlegg.",
     coverImage: "/images/articles/innregulering-ventilasjon/ventilasjon-2.jpg",
@@ -207,6 +213,7 @@ export const articles: Article[] = [
     title: "Lekker boligen din varme?",
     publishedAt: "2013-05-12",
     updatedAt: "2026-08-13",
+    relatedServices: ["uavhengig-kontroll-i-byggesak"],
     excerpt:
       "Termografering med varmekamera avdekker kuldebroer, manglende isolasjon og luftlekkasjer – og viser nøyaktig hvor boligen taper varme. Størst utbytte får du i den kalde årstiden.",
     coverImage: "/images/articles/lekker-boligen-din-varme/termografi-varmebilde.gif",

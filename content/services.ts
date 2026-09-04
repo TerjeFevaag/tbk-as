@@ -1,6 +1,9 @@
 export type Service = {
   slug: string;
   name: string;
+  // Optional keyword-rich <title> for SEO (falls back to `name`). The layout
+  // template appends " | Teknisk Byggkontroll AS".
+  seoTitle?: string;
   shortDescription: string;
   // Path under /public/images. Omit entirely when no real photo exists yet
   // for this service — presence of heroImage is what decides whether the
@@ -36,6 +39,7 @@ export const services: Service[] = [
   {
     slug: "innregulering",
     name: "Innregulering",
+    seoTitle: "Innregulering av varme- og kjøleanlegg",
     shortDescription:
       "Innregulering av varme- og kjøleanlegg gir jevnere temperatur, lavere energibruk og bedre komfort.",
     heroImage: "/images/services/innregulering/innregulering-1.png",
@@ -117,6 +121,7 @@ export const services: Service[] = [
   {
     slug: "sprinklerkontroll",
     name: "Sprinklerkontroll",
+    seoTitle: "Sprinklerkontroll – FG-kontroll",
     shortDescription:
       "FG-kontroll av sprinkleranlegg avdekker feil, mangler og endringer som kan redusere anleggets evne til å begrense eller slokke en brann.",
     // Wide, person-free technical shot cropped to banner proportions (a portrait
@@ -242,6 +247,7 @@ export const services: Service[] = [
   {
     slug: "uavhengig-kontroll-i-byggesak",
     name: "Uavhengig kontroll i byggesak",
+    seoTitle: "Uavhengig kontroll – våtrom og lufttetthet",
     shortDescription:
       "Uavhengig kontroll for tiltaksklasse 1 sikrer at våtrom og lufttetthet oppfyller kravene i plan- og bygningsloven.",
     // heroImage is intentionally omitted so the top falls back to the styled

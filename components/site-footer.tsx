@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
 
 export function SiteFooter() {
@@ -6,11 +9,49 @@ export function SiteFooter() {
   return (
     <footer className="bg-brand-slate text-white">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="font-serif text-xl">{siteConfig.name}</p>
             <p className="mt-3 max-w-xs text-sm text-white/70">{siteConfig.tagline}</p>
           </div>
+
+          <nav aria-label="Bunntekst-navigasjon" className="text-sm text-white/80">
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.15em] text-brand-orange-light">
+              Navigasjon
+            </p>
+            <ul className="space-y-1.5">
+              <li>
+                <Link href="/" className="transition-colors hover:text-white">
+                  Hjem
+                </Link>
+              </li>
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/tjenester/${service.slug}`}
+                    className="transition-colors hover:text-white"
+                  >
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/artikler" className="transition-colors hover:text-white">
+                  Artikler
+                </Link>
+              </li>
+              <li>
+                <Link href="/om-oss" className="transition-colors hover:text-white">
+                  Om oss
+                </Link>
+              </li>
+              <li>
+                <Link href="/kontakt-oss" className="transition-colors hover:text-white">
+                  Kontakt oss
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
           <div className="text-sm text-white/80">
             <p className="mb-3 text-xs font-medium uppercase tracking-[0.15em] text-brand-orange-light">
