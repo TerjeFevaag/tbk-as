@@ -20,6 +20,12 @@ const nextConfig: NextConfig = {
         destination: "/artikler",
         permanent: true,
       },
+      // Termografi-artikkelen fikk en nøkkelord-optimalisert slug (2026-09-04).
+      {
+        source: "/artikler/lekker-boligen-din-varme",
+        destination: "/artikler/termografi-av-bolig-og-bygg",
+        permanent: true,
+      },
     ];
   },
 };

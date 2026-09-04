@@ -209,16 +209,17 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "lekker-boligen-din-varme",
-    title: "Lekker boligen din varme?",
+    slug: "termografi-av-bolig-og-bygg",
+    title: "Termografi av bolig og bygg",
     publishedAt: "2013-05-12",
-    updatedAt: "2026-08-13",
+    updatedAt: "2026-09-04",
     relatedServices: ["uavhengig-kontroll-i-byggesak"],
     excerpt:
-      "Termografering med varmekamera avdekker kuldebroer, manglende isolasjon og luftlekkasjer – og viser nøyaktig hvor boligen taper varme. Størst utbytte får du i den kalde årstiden.",
-    coverImage: "/images/articles/lekker-boligen-din-varme/termografi-varmebilde.gif",
+      "Termografi av bolig og bygg med varmekamera avdekker kuldebroer, manglende isolasjon og luftlekkasjer – og viser nøyaktig hvor bygget taper varme. Størst utbytte får du i den kalde årstiden.",
+    coverImage:
+      "/images/articles/termografi-av-bolig-og-bygg/termografi-varmebilde.gif",
     body: [
-      "Et hus kan se tett og velisolert ut, men likevel lekke varme i det stille. Termografering med varmekamera gjør de usynlige varmetapene synlige – og viser hvor, og ofte hvorfor, boligen taper energi.",
+      "Et bygg kan se tett og velisolert ut, men likevel lekke varme i det stille. Termografi med varmekamera gjør de usynlige varmetapene synlige – og viser hvor, og ofte hvorfor, en bolig eller et næringsbygg taper energi.",
     ],
     sections: [
       {
@@ -237,6 +238,12 @@ export const articles: Article[] = [
           "Fukt og fuktskader som gir avvikende overflatetemperatur.",
           "Feil i vannbåren gulvvarme, for eksempel rørkurser uten sirkulasjon.",
           "Enkelte elektriske feil, som varmgang i tavler og kontakter.",
+        ],
+      },
+      {
+        heading: "Termografi av bolig, bygg og næringsbygg",
+        body: [
+          "Termografi er nyttig i alt fra eneboliger og leiligheter til større nærings- og industribygg. Metoden brukes til energikartlegging, tilstandsvurdering, kontroll av utført arbeid etter etterisolering eller ombygging, og til feilsøking av fukt, kuldebroer og elektriske anlegg.",
         ],
       },
       {
