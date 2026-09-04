@@ -13,7 +13,9 @@ export type Service = {
   // Falls back to heroImage when omitted. Use this when the hero banner needs a
   // wide shot but the card is better served by a different (e.g. portrait) photo.
   cardImage?: string;
-  galleryImages?: string[]; // additional real photos shown further down the detail page (Task 8)
+  // Additional real photos shown further down the detail page, each with its
+  // own descriptive alt text (accessibility + image SEO).
+  galleryImages?: { src: string; alt: string }[];
   // Optional embedded video (YouTube privacy-nocookie embed URL) + its title.
   videoUrl?: string;
   videoTitle?: string;
@@ -131,8 +133,14 @@ export const services: Service[] = [
     // The card keeps Olav (client's request for the "Våre tjenester" grid).
     cardImage: "/images/services/sprinkler/sprinkler-olav.jpg",
     galleryImages: [
-      "/images/services/sprinkler/sprinkler-kontroll-2.jpg",
-      "/images/services/sprinkler/sprinkler-4.jpg",
+      {
+        src: "/images/services/sprinkler/sprinkler-kontroll-2.jpg",
+        alt: "Olav L. Strøm kontrollerer sprinklerrør i himlingen i et parkeringsanlegg",
+      },
+      {
+        src: "/images/services/sprinkler/sprinkler-4.jpg",
+        alt: "Røde sprinklerrør og et sprinklerhode montert under taket",
+      },
     ],
     videoUrl: "https://www.youtube-nocookie.com/embed/LEswFSuWHwY",
     videoTitle: "Sprinklerkontroll – Teknisk Byggkontroll",
@@ -260,7 +268,10 @@ export const services: Service[] = [
       "Resultat: Uavhengig sluttdokumentasjon",
     ],
     galleryImages: [
-      "/images/services/uavhengig-kontroll-i-byggesak/uk-vatrom.png",
+      {
+        src: "/images/services/uavhengig-kontroll-i-byggesak/uk-vatrom.png",
+        alt: "Teknisk tegning av våtrom med våtsoner, sluk, fall og membrandetaljer",
+      },
     ],
     sections: [
       {

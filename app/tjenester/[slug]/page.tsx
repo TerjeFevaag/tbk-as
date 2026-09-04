@@ -277,15 +277,15 @@ export default async function ServiceDetailPage({
 
                   {index === inlineAfterIndex && inlineImage && (
                     <a
-                      href={inlineImage}
+                      href={inlineImage.src}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${service.name} — åpne bildet i full størrelse`}
+                      aria-label={`${inlineImage.alt} — åpne i full størrelse`}
                       className="group/zoom relative mt-10 block aspect-[16/10] w-full cursor-zoom-in overflow-hidden rounded-sm bg-brand-bg"
                     >
                       <Image
-                        src={inlineImage}
-                        alt={`${service.name} — bilde fra oppdrag`}
+                        src={inlineImage.src}
+                        alt={inlineImage.alt}
                         fill
                         sizes="(min-width: 1024px) 66vw, 100vw"
                         className="object-cover"
@@ -333,18 +333,18 @@ export default async function ServiceDetailPage({
                   Fra oppdrag
                 </h2>
                 <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
-                  {restGalleryImages.map((src) => (
+                  {restGalleryImages.map((image) => (
                     <a
-                      key={src}
-                      href={src}
+                      key={image.src}
+                      href={image.src}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${service.name} — åpne bildet i full størrelse`}
+                      aria-label={`${image.alt} — åpne i full størrelse`}
                       className="group/zoom relative block aspect-square cursor-zoom-in overflow-hidden rounded-sm bg-brand-bg"
                     >
                       <Image
-                        src={src}
-                        alt={`${service.name} — bilde fra oppdrag`}
+                        src={image.src}
+                        alt={image.alt}
                         fill
                         sizes="(min-width: 768px) 33vw, 50vw"
                         className="object-cover transition-transform duration-500 group-hover/zoom:scale-105"
